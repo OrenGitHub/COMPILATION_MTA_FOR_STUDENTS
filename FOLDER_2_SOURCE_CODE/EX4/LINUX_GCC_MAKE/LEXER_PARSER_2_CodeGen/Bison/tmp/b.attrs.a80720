@@ -1,0 +1,53 @@
+#line 1 "tiger.y"
+
+#include <stdio.h>
+#include "../../../COMMON_H_FILES/util.h"
+#include "../../../COMMON_H_FILES/errormsg.h"
+#include "../../../COMMON_H_FILES/symbol.h" 
+#include "../../../COMMON_H_FILES/absyn.h"
+
+int yylex(void); /* function prototype */
+
+A_exp absyn_root;
+
+void yyerror(char *s)
+{
+ EM_error(EM_tokPos, "%s", s);
+}
+
+#line 19 "tiger.y"
+typedef union
+{
+	int			pos;
+	int			ival;
+	float		fval;
+	string		sval;
+	A_var		var;
+	A_exp		exp;
+	A_dec		dec;
+	A_decList	decList;
+	A_expList	expList;
+	A_fieldList	fieldList;
+	A_fundec	fundec;
+
+	struct
+	{
+		union
+		{
+			int			ival;
+			float		fval;
+			string		sval;
+			A_var		var;
+			A_exp		exp;
+			A_dec		dec;
+			A_decList	decList;
+			A_expList	expList;
+			A_fieldList	fieldList;
+			A_fundec	fundec;
+		}
+		gval;
+		
+		int type;
+	}
+	xval;
+} YYSTYPE;

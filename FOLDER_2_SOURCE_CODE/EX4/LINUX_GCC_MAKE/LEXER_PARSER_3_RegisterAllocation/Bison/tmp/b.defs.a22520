@@ -1,0 +1,15 @@
+typedef union
+{
+	union
+	{
+		int								ival;
+		int								temp_serial_number;
+		float							fval;
+		string							sval;
+	}
+	gval;
+} YYSTYPE;
+#define	INT	258
+
+
+extern YYSTYPE zzlval;

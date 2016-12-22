@@ -1,0 +1,60 @@
+#include "../VerifyCodeGen/absyn.h"
+
+typedef union
+{
+	int						ival;
+	float					fval;
+	string					sval;
+	ABSTRACT_SYNTAX_exp		exp;
+	ABSTRACT_SYNTAX_expList	expList;
+
+	struct
+	{
+		union
+		{
+			int						ival;
+			float					fval;
+			string					sval;
+			ABSTRACT_SYNTAX_exp		exp;
+			ABSTRACT_SYNTAX_expList	expList;
+		}
+		gval;
+		
+		int type;
+	}
+	xval;
+} YYSTYPE;
+#define	INT	258
+#define	FLOAT	259
+#define	STRING	260
+#define	ID	261
+#define	LABEL	262
+#define	COMMA	263
+#define	COLON	264
+#define	LOAD	265
+#define	STORE	266
+#define	LOAD_IMMEDIATE	267
+#define	ADD_IMMEDIATE	268
+#define	JUMP	269
+#define	JUMP_AND_LINK	270
+#define	LPAREN	271
+#define	RPAREN	272
+#define	PLUS	273
+#define	MINUS	274
+#define	ADD	275
+#define	SUB	276
+#define	MUL	277
+#define	TEMP	278
+#define	BEQ	279
+#define	BNE	280
+#define	BLT	281
+#define	BLE	282
+#define	BGT	283
+#define	BGE	284
+#define	REGISTER	285
+#define	AND	286
+#define	OR	287
+#define	MOVE	288
+
+
+extern YYSTYPE yylval;

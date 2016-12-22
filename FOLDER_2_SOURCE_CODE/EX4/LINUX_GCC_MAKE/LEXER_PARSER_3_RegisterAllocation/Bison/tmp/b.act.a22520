@@ -1,0 +1,8 @@
+
+  switch (yyn) {
+
+case 1:
+#line 49 "TEMPS_TO_REGS.y"
+{TEMPS_TO_REGS_root = yyvsp[0].gval.expList;;
+    break;}
+}

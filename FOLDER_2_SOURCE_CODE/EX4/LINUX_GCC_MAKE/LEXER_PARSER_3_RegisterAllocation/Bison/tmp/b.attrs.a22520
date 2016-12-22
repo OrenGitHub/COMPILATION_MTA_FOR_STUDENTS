@@ -1,0 +1,39 @@
+#line 1 "TEMPS_TO_REGS.y"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "../../../Compiler/HEADER_FILES/util.h"
+#include "../../../Compiler/HEADER_FILES/TEMPS_TO_REGS_errormsg.h"
+#include "../../../Compiler/HEADER_FILES/TEMPS_TO_REGS.h"
+
+#define alloca malloc
+
+#define yyparse ggparse
+#define yylex gglex
+#define yyerror ggerror
+#define yylval gglval
+#define yychar ggchar
+#define yydebug ggdebug
+#define yynerrs ggnerrs
+
+int gglex(void); /* function prototype */
+
+TEMPS_TO_REGS_expList TEMPS_TO_REGS_root;
+
+void ggerror(char *s)
+{
+	TEMPS_TO_REGS_EM_error(TEMPS_TO_REGS_EM_tokPos, "%s", s);
+}
+
+#line 28 "TEMPS_TO_REGS.y"
+typedef union
+{
+	union
+	{
+		int								ival;
+		int								temp_serial_number;
+		float							fval;
+		string							sval;
+	}
+	gval;
+} YYSTYPE;

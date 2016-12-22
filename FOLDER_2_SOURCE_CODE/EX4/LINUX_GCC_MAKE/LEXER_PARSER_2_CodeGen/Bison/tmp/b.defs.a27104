@@ -1,0 +1,57 @@
+typedef union
+{
+	int						ival;
+	float					fval;
+	string					sval;
+	ABSTRACT_SYNTAX_exp		exp;
+	ABSTRACT_SYNTAX_expList	expList;
+
+	struct
+	{
+		union
+		{
+			int						ival;
+			float					fval;
+			string					sval;
+			ABSTRACT_SYNTAX_exp		exp;
+			ABSTRACT_SYNTAX_expList	expList;
+		}
+		gval;
+		
+		int type;
+	}
+	xval;
+} YYSTYPE;
+#define	INT	258
+#define	FLOAT	259
+#define	STRING	260
+#define	ID	261
+#define	LABEL	262
+#define	COMMA	263
+#define	COLON	264
+#define	LOAD	265
+#define	STORE	266
+#define	LOAD_IMMEDIATE	267
+#define	JUMP	268
+#define	JUMP_AND_LINK	269
+#define	LPAREN	270
+#define	RPAREN	271
+#define	PLUS	272
+#define	MINUS	273
+#define	ADD	274
+#define	SUB	275
+#define	MUL	276
+#define	TEMP	277
+#define	BEQ	278
+#define	BNE	279
+#define	BLT	280
+#define	BLE	281
+#define	BGT	282
+#define	BGE	283
+#define	REGISTER	284
+#define	AND	285
+#define	OR	286
+#define	MOVE	287
+
+
+extern YYSTYPE yylval;

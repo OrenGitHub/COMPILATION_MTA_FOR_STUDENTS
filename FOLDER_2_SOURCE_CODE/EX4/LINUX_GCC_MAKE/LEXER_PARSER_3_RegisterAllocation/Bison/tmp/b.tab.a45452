@@ -1,0 +1,34 @@
+
+/*  A Bison parser, made from tiger.y
+ by  GNU Bison version 1.25
+  */
+
+#define YYBISON 1  /* Identify Bison output.  */
+
+#define	INT	258
+#define	FLOAT	259
+#define	STRING	260
+#define	ID	261
+#define	LABEL	262
+#define	COMMA	263
+#define	COLON	264
+#define	LOAD	265
+#define	LOAD_IMMEDIATE	266
+#define	JUMP	267
+#define	LPAREN	268
+#define	RPAREN	269
+#define	PLUS	270
+#define	MINUS	271
+#define	ADD	272
+#define	SUB	273
+#define	TEMP	274
+#define	BEQ	275
+#define	BNE	276
+#define	BLT	277
+#define	BLE	278
+#define	BGT	279
+#define	BGE	280
+#define	AND	281
+#define	OR	282
+#define	MOVE	283
+

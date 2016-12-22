@@ -1,0 +1,20 @@
+#line 1 "tiger.y"
+
+#include <stdio.h>
+#include "../../COMMON_H_FILES/util.h"
+#include "../../COMMON_H_FILES/errormsg.h"
+
+int yylex(void); /* function prototype */
+
+void yyerror(char *s)
+{
+ EM_error(EM_tokPos, "%s", s);
+}
+
+#line 15 "tiger.y"
+typedef union {
+	int pos;
+	int ival;
+	float fval;
+	string sval;
+	} YYSTYPE;

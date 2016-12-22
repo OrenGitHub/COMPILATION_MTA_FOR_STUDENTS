@@ -1,0 +1,228 @@
+
+  switch (yyn) {
+
+case 1:
+#line 125 "tiger.y"
+{absyn_root = yyvsp[0].xval.gval.exp;;
+    break;}
+case 2:
+#line 127 "tiger.y"
+{yyval.xval.gval.exp = A_IntExp(EM_tokPos,yyvsp[0].xval.gval.ival);;
+    break;}
+case 3:
+#line 128 "tiger.y"
+{yyval.xval.gval.exp = A_FloatExp(EM_tokPos,yyvsp[0].xval.gval.fval);;
+    break;}
+case 4:
+#line 129 "tiger.y"
+{yyval.xval.gval.exp = A_StringExp(EM_tokPos,yyvsp[0].xval.gval.sval);;
+    break;}
+case 5:
+#line 130 "tiger.y"
+{yyval.xval.gval.exp = A_VarExp(EM_tokPos,yyvsp[0].xval.gval.var);;
+    break;}
+case 6:
+#line 131 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 7:
+#line 132 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[-1].xval.gval.exp;;
+    break;}
+case 8:
+#line 133 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 9:
+#line 134 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 10:
+#line 135 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 11:
+#line 136 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 12:
+#line 137 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 13:
+#line 138 "tiger.y"
+{yyval.xval.gval.exp = yyvsp[0].xval.gval.exp;;
+    break;}
+case 14:
+#line 141 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_plusOp,   yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 15:
+#line 142 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_minusOp,  yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 16:
+#line 143 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_timesOp,  yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 17:
+#line 144 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_divideOp, yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 18:
+#line 145 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_eqOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 19:
+#line 146 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_neqOp,    yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 20:
+#line 147 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_ltOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 21:
+#line 148 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_leOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 22:
+#line 149 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_gtOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 23:
+#line 150 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_geOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 24:
+#line 151 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_andOp,    yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 25:
+#line 152 "tiger.y"
+{yyval.xval.gval.exp = A_OpExp(EM_tokPos, A_orOp,     yyvsp[-2].xval.gval.exp, yyvsp[0].xval.gval.exp);;
+    break;}
+case 26:
+#line 155 "tiger.y"
+{A_IfExp(EM_tokPos,yyvsp[-2].xval.gval.exp,yyvsp[0].xval.gval.exp,NULL);;
+    break;}
+case 27:
+#line 158 "tiger.y"
+{yyval.xval.gval.exp = A_ForExp(EM_tokPos,S_Symbol(yyvsp[-6].xval.gval.sval),yyvsp[-4].xval.gval.exp,yyvsp[-2].xval.gval.exp,yyvsp[0].xval.gval.exp);;
+    break;}
+case 28:
+#line 161 "tiger.y"
+{yyval.xval.gval.expList = A_ExpList(yyvsp[-2].xval.gval.exp,yyvsp[0].xval.gval.expList);;
+    break;}
+case 29:
+#line 162 "tiger.y"
+{yyval.xval.gval.expList = A_ExpList(yyvsp[0].xval.gval.exp,NULL);;
+    break;}
+case 30:
+#line 164 "tiger.y"
+{yyval.xval.gval.exp = A_SeqExp(EM_tokPos,A_ExpList(yyvsp[-3].xval.gval.exp,yyvsp[-1].xval.gval.expList));;
+    break;}
+case 31:
+#line 167 "tiger.y"
+{yyval.xval.gval.fieldList = A_FieldList(A_Field(EM_tokPos,S_Symbol(yyvsp[-4].xval.gval.sval),S_Symbol(yyvsp[-2].xval.gval.sval)),yyvsp[0].xval.gval.fieldList);;
+    break;}
+case 32:
+#line 168 "tiger.y"
+{yyval.xval.gval.fieldList = A_FieldList(A_Field(EM_tokPos,S_Symbol(yyvsp[-2].xval.gval.sval),S_Symbol(yyvsp[0].xval.gval.sval)),NULL);;
+    break;}
+case 33:
+#line 171 "tiger.y"
+{yyval.xval.gval.dec = A_TypeDec(EM_tokPos,A_Namety(S_Symbol(yyvsp[-2].xval.gval.sval),A_NameTy(  EM_tokPos,S_Symbol(yyvsp[0].xval.gval.sval))));;
+    break;}
+case 34:
+#line 172 "tiger.y"
+{yyval.xval.gval.dec = A_TypeDec(EM_tokPos,A_Namety(S_Symbol(yyvsp[-4].xval.gval.sval),A_ArrayTy( EM_tokPos,S_Symbol(yyvsp[-2].xval.gval.sval))));;
+    break;}
+case 35:
+#line 173 "tiger.y"
+{yyval.xval.gval.dec = A_TypeDec(EM_tokPos,A_Namety(S_Symbol(yyvsp[-4].xval.gval.sval),A_RecordTy(EM_tokPos,S_Symbol(yyvsp[-2].xval.gval.sval))));;
+    break;}
+case 36:
+#line 176 "tiger.y"
+{yyval.xval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-2].xval.gval.sval),NULL,yyvsp[0].xval.gval.exp);;
+    break;}
+case 37:
+#line 177 "tiger.y"
+{yyval.xval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-4].xval.gval.sval),S_Symbol(yyvsp[-2].xval.gval.sval),yyvsp[0].xval.gval.exp);;
+    break;}
+case 38:
+#line 180 "tiger.y"
+{yyval.xval.gval.dec = A_FunctionDec(EM_tokPos,A_Fundec(EM_tokPos,S_Symbol(yyvsp[-4].xval.gval.sval),NULL,NULL,yyvsp[0].xval.gval.exp));;
+    break;}
+case 39:
+#line 181 "tiger.y"
+{yyval.xval.gval.dec = A_FunctionDec(EM_tokPos,A_Fundec(EM_tokPos,S_Symbol(yyvsp[-6].xval.gval.sval),NULL,S_Symbol(yyvsp[-2].xval.gval.sval),yyvsp[0].xval.gval.exp));;
+    break;}
+case 40:
+#line 182 "tiger.y"
+{yyval.xval.gval.dec = A_FunctionDec(EM_tokPos,A_Fundec(EM_tokPos,S_Symbol(yyvsp[-5].xval.gval.sval),yyvsp[-3].xval.gval.fieldList,NULL,yyvsp[0].xval.gval.exp));;
+    break;}
+case 41:
+#line 183 "tiger.y"
+{yyval.xval.gval.dec = A_FunctionDec(EM_tokPos,A_Fundec(EM_tokPos,S_Symbol(yyvsp[-7].xval.gval.sval),yyvsp[-5].xval.gval.fieldList,S_Symbol(yyvsp[-2].xval.gval.sval),yyvsp[0].xval.gval.exp));;
+    break;}
+case 42:
+#line 185 "tiger.y"
+{yyval.xval.gval.dec = yyvsp[0].xval.gval.dec;;
+    break;}
+case 43:
+#line 186 "tiger.y"
+{yyval.xval.gval.dec = yyvsp[0].xval.gval.dec;;
+    break;}
+case 44:
+#line 187 "tiger.y"
+{yyval.xval.gval.dec = yyvsp[0].xval.gval.dec;;
+    break;}
+case 45:
+#line 190 "tiger.y"
+{yyval.xval.gval.decList = A_DecList(yyvsp[-1].xval.gval.dec,yyvsp[0].xval.gval.decList);;
+    break;}
+case 46:
+#line 191 "tiger.y"
+{yyval.xval.gval.decList = A_DecList(yyvsp[0].xval.gval.dec,NULL);;
+    break;}
+case 47:
+#line 194 "tiger.y"
+{yyval.xval.gval.exp = A_LetExp(EM_tokPos,yyvsp[-3].xval.gval.decList,yyvsp[-1].xval.gval.exp);;
+    break;}
+case 48:
+#line 197 "tiger.y"
+{yyval.xval.gval.var = A_SimpleVar(EM_tokPos,S_Symbol(yyvsp[0].xval.gval.sval));;
+    break;}
+case 49:
+#line 198 "tiger.y"
+{yyval.xval.gval.var = A_FieldVar(EM_tokPos,yyvsp[-2].xval.gval.var,S_Symbol(yyvsp[-2].xval.gval.sval));;
+    break;}
+case 50:
+#line 199 "tiger.y"
+{yyval.xval.gval.var = A_SubscriptVar(EM_tokPos,yyvsp[-3].xval.gval.var,yyvsp[-1].xval.gval.exp);;
+    break;}
+case 51:
+#line 201 "tiger.y"
+{yyval.xval.gval.exp = A_AssignExp(EM_tokPos,yyvsp[-2].xval.gval.var,yyvsp[0].xval.gval.exp);;
+    break;}
+case 52:
+#line 203 "tiger.y"
+{numArguments++; yyval.xval.gval.expList = A_ExpList(yyvsp[-2].xval.gval.exp,yyvsp[0].xval.gval.expList);;
+    break;}
+case 53:
+#line 204 "tiger.y"
+{numArguments++; yyval.xval.gval.expList = A_ExpList(yyvsp[0].xval.gval.exp,NULL);;
+    break;}
+case 54:
+#line 206 "tiger.y"
+{yyval.xval.gval.exp = A_CallExp(EM_tokPos,S_Symbol(yyvsp[-2].xval.gval.sval),NULL,0);;
+    break;}
+case 55:
+#line 207 "tiger.y"
+{yyval.xval.gval.exp = A_CallExp(EM_tokPos,S_Symbol(yyvsp[-3].xval.gval.sval),A_ExpList(yyvsp[-1].xval.gval.exp,NULL),1);;
+    break;}
+case 56:
+#line 208 "tiger.y"
+{yyval.xval.gval.exp = A_CallExp(EM_tokPos,S_Symbol(yyvsp[-5].xval.gval.sval),A_ExpList(yyvsp[-3].xval.gval.exp,yyvsp[-1].xval.gval.expList),numArguments);numArguments=0;;
+    break;}
+}

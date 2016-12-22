@@ -1,0 +1,17 @@
+typedef union
+{
+	union
+	{
+		int		temp_serial_number;
+		string	sval;
+	}
+	gval;
+} YYSTYPE;
+#define	TEMP	258
+#define	SPACE	259
+#define	TAB	260
+#define	NEWLINE	261
+#define	ANY_OTHER_THING	262
+
+
+extern YYSTYPE gglval;

@@ -1,0 +1,44 @@
+#line 1 "PSEUDO_MIPS_ASM.y"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "../../../Compiler/HEADER_FILES/util.h"
+#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h"
+#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
+
+#define alloca malloc
+
+#define yyparse zzparse
+#define yylex zzlex
+#define yyerror zzerror
+#define yylval zzlval
+#define yychar zzchar
+#define yydebug zzdebug
+#define yynerrs zznerrs
+
+int zzlex(void); /* function prototype */
+
+PSEUDO_MIPS_ASM_AST_expList PSEUDO_MIPS_ASM_AST_root;
+
+void zzerror(char *s)
+{
+	PSEUDO_MIPS_ASM_EM_error(EM_tokPos, "%s", s);
+}
+
+#line 28 "PSEUDO_MIPS_ASM.y"
+typedef union
+{
+	union
+	{
+		int								ival;
+		int								temp_serial_number;
+		float							fval;
+		string							sval;
+		string							register_name;
+		PSEUDO_MIPS_ASM_AST_Var			var;
+		PSEUDO_MIPS_ASM_AST_Label_Type_	label;
+		PSEUDO_MIPS_ASM_AST_exp			exp;
+		PSEUDO_MIPS_ASM_AST_expList		expList;
+	}
+	gval;
+} YYSTYPE;

@@ -1,0 +1,20 @@
+\documentclass{article}
+\title{StarKist Programming Language}
+\author{a capite ad calcem}
+\date{The definitive guide}
+\begin{document}
+\maketitle
+\section{Introduction}
+sdfsdfg
+\section*{Syntax}
+The syntax of the language is described in Table 800.
+
+dfsgdfg
+\section{Semantic Analysis}
+dfgfdg
+\section{Intermediate Representation}
+fdgfdg
+\section{Code Generation}
+sdfsdf
+
+\end{document}

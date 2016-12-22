@@ -1,0 +1,62 @@
+typedef union
+{
+	int			pos;
+	int			ival;
+	float		fval;
+	string		sval;
+	A_var		var;
+	A_exp		exp;
+	A_dec		dec;
+	A_decList	decList;
+	A_expList	expList;
+	A_fieldList	fieldList;
+	A_fundec	fundec;
+
+	struct
+	{
+		union
+		{
+			int			ival;
+			float		fval;
+			string		sval;
+			A_var		var;
+			A_exp		exp;
+			A_dec		dec;
+			A_decList	decList;
+			A_expList	expList;
+			A_fieldList	fieldList;
+			A_fundec	fundec;
+		}
+		gval;
+		
+		int type;
+	}
+	xval;
+} YYSTYPE;
+#define	INT	258
+#define	FLOAT	259
+#define	STRING	260
+#define	ID	261
+#define	COMMA	262
+#define	COLON	263
+#define	LOAD	264
+#define	LOAD_IMMEDIATE	265
+#define	JUMP	266
+#define	LPAREN	267
+#define	RPAREN	268
+#define	PLUS	269
+#define	MINUS	270
+#define	TIMES	271
+#define	DIVIDE	272
+#define	BEQ	273
+#define	BNE	274
+#define	BLT	275
+#define	BLE	276
+#define	BGT	277
+#define	BGE	278
+#define	AND	279
+#define	OR	280
+#define	MOVE	281
+
+
+extern YYSTYPE yylval;
