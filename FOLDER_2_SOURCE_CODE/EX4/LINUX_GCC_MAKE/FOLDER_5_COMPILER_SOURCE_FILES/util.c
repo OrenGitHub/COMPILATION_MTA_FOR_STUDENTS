@@ -17,7 +17,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "./FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../HEADER_FILES/util.h"
 
 void *checked_malloc(int len)
 {

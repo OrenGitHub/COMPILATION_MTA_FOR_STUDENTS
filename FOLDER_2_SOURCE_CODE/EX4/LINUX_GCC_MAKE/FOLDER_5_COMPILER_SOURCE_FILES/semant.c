@@ -13,12 +13,12 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../FOLDER_6_COMPILER_HEADER_FILES/types.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/env.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/semant.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/symbol.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
+#include "../HEADER_FILES/types.h"
+#include "../HEADER_FILES/env.h"
+#include "../HEADER_FILES/semant.h"
+#include "../HEADER_FILES/symbol.h"
+#include "../HEADER_FILES/absyn.h"
+#include "../HEADER_FILES/errormsg.h"
 
 /**************************/
 /* FUNCTIONS DECLARATIONS */
@@ -706,7 +706,10 @@ Ty_ty SEM_transVarExp(S_table venv,S_table tenv,A_var var)
 
 	case (A_fieldVar):;
 
-	case (A_subscriptVar):;
+	case (A_subscriptVar):
+		
+		var->u.subscript.var
+		;
 
 	}
 }

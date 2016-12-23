@@ -18,11 +18,11 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/parse.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/temp.h"
+#include "../HEADER_FILES/util.h"
+#include "../HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
+#include "../HEADER_FILES/errormsg.h"
+#include "../HEADER_FILES/parse.h"
+#include "../HEADER_FILES/temp.h"
 
 /***************/
 /* DEFINITIONS */
