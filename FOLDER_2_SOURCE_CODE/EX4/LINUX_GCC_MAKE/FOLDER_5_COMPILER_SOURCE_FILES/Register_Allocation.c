@@ -12,7 +12,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/temp.h"
+#include "temp.h"
 
 /***************/
 /* DEFINITIONS */

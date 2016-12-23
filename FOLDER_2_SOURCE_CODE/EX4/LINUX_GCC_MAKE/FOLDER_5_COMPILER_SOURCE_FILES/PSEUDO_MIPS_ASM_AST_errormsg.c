@@ -17,8 +17,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h"
+#include "util.h"
+#include "PSEUDO_MIPS_ASM_AST_errormsg.h"
 
 bool PSEUDO_MIPS_ASM_AST_anyErrors= FALSE;
 

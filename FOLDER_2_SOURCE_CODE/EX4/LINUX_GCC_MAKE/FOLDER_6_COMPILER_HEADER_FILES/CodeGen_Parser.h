@@ -52,4 +52,4 @@ typedef union
 #define	MOVE	293
 
 
-extern YYSTYPE yylval;
+extern YYSTYPE zzlval;

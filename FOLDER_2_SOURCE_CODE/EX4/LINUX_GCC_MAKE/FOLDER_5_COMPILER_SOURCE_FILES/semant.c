@@ -13,12 +13,12 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/types.h"
-#include "../HEADER_FILES/env.h"
-#include "../HEADER_FILES/semant.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/errormsg.h"
+#include "types.h"
+#include "env.h"
+#include "semant.h"
+#include "symbol.h"
+#include "absyn.h"
+#include "errormsg.h"
 
 /**************************/
 /* FUNCTIONS DECLARATIONS */

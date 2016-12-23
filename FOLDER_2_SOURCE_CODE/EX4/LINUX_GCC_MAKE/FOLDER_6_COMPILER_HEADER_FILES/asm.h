@@ -4,7 +4,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/tree.h"
+#include "tree.h"
 
 /**************************/
 /* IR_To_Pseudo_Assembley */

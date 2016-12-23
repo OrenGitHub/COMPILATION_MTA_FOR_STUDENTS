@@ -2,10 +2,10 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h"
-#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
-#include "../../../BISON/BISON_04_for_Code_Generation/Bison/PSEUDO_MIPS_ASM_AST.tab.h"
+#include "util.h"
+#include "PSEUDO_MIPS_ASM_AST_errormsg.h"
+#include "PSEUDO_MIPS_ASM_AST.h"
+#include "CodeGen_Parser.h"
 
 int PSEUDO_MIPS_ASM_AST_charPos=1;
 

@@ -4,8 +4,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/types.h"
+#include "absyn.h"
+#include "types.h"
 
 /*********************/
 /* Semantic_Analysis */

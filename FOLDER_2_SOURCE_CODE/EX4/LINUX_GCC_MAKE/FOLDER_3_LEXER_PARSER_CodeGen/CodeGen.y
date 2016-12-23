@@ -1,9 +1,9 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h"
-#include "../../../Compiler/HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
+#include "util.h"
+#include "PSEUDO_MIPS_ASM_AST_errormsg.h"
+#include "PSEUDO_MIPS_ASM_AST.h"
 
 #define alloca malloc
 

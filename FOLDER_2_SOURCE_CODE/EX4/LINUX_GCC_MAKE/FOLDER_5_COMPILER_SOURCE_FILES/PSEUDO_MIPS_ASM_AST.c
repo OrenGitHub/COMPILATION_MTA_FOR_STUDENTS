@@ -16,8 +16,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
+#include "util.h"
+#include "PSEUDO_MIPS_ASM_AST.h"
 
 
 PSEUDO_MIPS_ASM_AST_exp PSEUDO_MIPS_ASM_AST_LOAD(PSEUDO_MIPS_ASM_AST_Var var1,PSEUDO_MIPS_ASM_AST_Var var2,int offset)

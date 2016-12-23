@@ -4,7 +4,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
+#include "util.h"
 
 void Write_Assembley_Output_File(
 	string pseudo_assembley_filename,

@@ -1,10 +1,10 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/errormsg.h"
-#include "../../../Compiler/HEADER_FILES/symbol.h" 
-#include "../../../Compiler/HEADER_FILES/absyn.h"
+#include "util.h"
+#include "errormsg.h"
+#include "symbol.h" 
+#include "absyn.h"
 
 #define alloca malloc
 

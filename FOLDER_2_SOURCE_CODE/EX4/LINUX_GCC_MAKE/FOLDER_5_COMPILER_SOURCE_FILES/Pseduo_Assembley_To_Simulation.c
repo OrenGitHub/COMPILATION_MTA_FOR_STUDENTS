@@ -1,6 +1,6 @@
-/**********/
-/* main.c */
-/**********/
+/************************************/
+/* Pseudo_Assembley_To_Simulation.c */
+/************************************/
 
 /*************************/
 /* GENERAL INCLUDE FILES */
@@ -12,12 +12,12 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/temp.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/parse.h"
-#include "../Header_FILES/frame.h"
-#include "../HEADER_FILES/errormsg.h"
+#include "util.h"
+#include "temp.h"
+#include "absyn.h"
+#include "parse.h"
+#include "frame.h"
+#include "errormsg.h"
 
 #define MAX_NAME_LENGTH_OF_TEMPORARY_OR_REGISTER 16
 /********************/
@@ -33,7 +33,7 @@ FILE *fl;
 /********************/
 /* GLOBAL VARIABLES */
 /********************/
-int index=0;
+int indexGlobal=0;
 
 string Temporary_Or_Register(PSEUDO_MIPS_ASM_AST_Var var)
 {
@@ -42,8 +42,9 @@ string Temporary_Or_Register(PSEUDO_MIPS_ASM_AST_Var var)
 
 	if (var->type == TEMPORARY_VAR)
 	{
-		strcpy(temp_or_register,"Temp_");
-		strcpy(temp_or_register+strlen("Temp_"),itoa(var->u.temp,temp_buffer,10));
+		//strcpy(temp_or_register,"Temp_");
+		sprintf(temp_or_register,"Temp_%s",var->u.temp,temp_buffer);
+		//strcpy(temp_or_register+strlen("Temp_"),itoa(var->u.temp,temp_buffer,10));
 	}
 	if (var->type == REGISTER_VAR)
 	{
@@ -232,15 +233,15 @@ void CodeGenerationExp_Jump_And_link(PSEUDO_MIPS_ASM_AST_exp exp)
 	fprintf(
 		fl,
 		"\t__asm\n\t{\n\t\tcall _here%d\n\t\t_here%d: pop eax\n\t\tadd eax,14\n\t\tmov ra,eax\n\t}\n\n",
-		index,
-		index);
+		indexGlobal,
+		indexGlobal);
 
 	fprintf(
 		fl,
 		"\tgoto %s;\n\n",
 		exp->u.jump_and_link);
 
-	index++;
+	indexGlobal++;
 }
 void CodeGenerationExp_Jump_Register(PSEUDO_MIPS_ASM_AST_exp exp)
 {

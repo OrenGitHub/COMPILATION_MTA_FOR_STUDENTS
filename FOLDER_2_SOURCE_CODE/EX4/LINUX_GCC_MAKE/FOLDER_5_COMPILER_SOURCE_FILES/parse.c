@@ -10,12 +10,12 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/parse.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/errormsg.h"
-#include "../HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h"
+#include "parse.h"
+#include "symbol.h"
+#include "util.h"
+#include "absyn.h"
+#include "errormsg.h"
+#include "PSEUDO_MIPS_ASM_AST_errormsg.h"
 
 /************************/
 /* Tiger_Program_To_AST */

@@ -17,8 +17,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/errormsg.h"
+#include "util.h"
+#include "errormsg.h"
 
 bool anyErrors= FALSE;
 

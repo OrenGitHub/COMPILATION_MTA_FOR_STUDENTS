@@ -15,8 +15,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/tree.h"
-#include "../HEADER_FILES/frame.h"
+#include "tree.h"
+#include "frame.h"
 
 /********************/
 /* GLOBAL VARIABLES */

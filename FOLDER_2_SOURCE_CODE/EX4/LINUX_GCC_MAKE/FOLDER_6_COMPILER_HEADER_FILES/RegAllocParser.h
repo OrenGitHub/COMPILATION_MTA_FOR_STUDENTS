@@ -17,4 +17,4 @@ typedef union
 #define	ANY_OTHER_THING	265
 
 
-extern YYSTYPE yylval;
+extern YYSTYPE gglval;

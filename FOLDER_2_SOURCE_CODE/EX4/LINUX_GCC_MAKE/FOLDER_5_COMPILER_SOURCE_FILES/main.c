@@ -11,19 +11,19 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/asm.h"
-#include "../HEADER_FILES/IR.h"
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/tree.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/semant.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/errormsg.h"
-#include "../HEADER_FILES/parse.h"
-#include "../HEADER_FILES/Liveness_Analysis.h"
-#include "../HEADER_FILES/Register_Allocation.h"
-#include "../HEADER_FILES/Pseudo_Assembley_To_Simulation.h"
-#include "../HEADER_FILES/Write_Assembley_Output_Filename.h"
+#include "asm.h"
+#include "IR.h"
+#include "util.h"
+#include "tree.h"
+#include "symbol.h"
+#include "semant.h"
+#include "absyn.h"
+#include "errormsg.h"
+#include "parse.h"
+#include "Liveness_Analysis.h"
+#include "Register_Allocation.h"
+#include "Pseudo_Assembley_To_Simulation.h"
+#include "Write_Assembley_Output_Filename.h"
 
 /********************/
 /* GLOBAL VARIABLES */

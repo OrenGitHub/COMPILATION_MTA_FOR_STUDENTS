@@ -10,9 +10,9 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../../BISON/BISON_05_for_Register_Allocation/Bison/TEMPS_TO_REGS.tab.h"
-#include "../HEADER_FILES/TEMPS_TO_REGS_errormsg.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/RegAllocParser.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/TEMPS_TO_REGS_errormsg.h"
 
 /************************/
 /* EXTERNAL DEFINITIONS */

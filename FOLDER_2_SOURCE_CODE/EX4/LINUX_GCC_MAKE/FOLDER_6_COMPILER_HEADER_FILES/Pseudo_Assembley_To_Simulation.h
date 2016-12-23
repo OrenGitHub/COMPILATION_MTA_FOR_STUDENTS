@@ -13,7 +13,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
+#include "util.h"
 
 void Pseudo_Assembley_To_Simulation(string pseudo_assembley_filename,string simulation_filename);
 

@@ -10,8 +10,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/env.h"
-#include "../HEADER_FILES/symbol.h"
+#include "env.h"
+#include "symbol.h"
 
 /***************/
 /* E_base_tenv */

@@ -9,7 +9,11 @@
 /* INCLUDE FILES */
 /*****************/
 #include <stdio.h>
-#include "../HEADER_FILES/symbol.h"
+
+/*************************/
+/* PROJECT INCLUDE FILES */
+/*************************/
+#include "symbol.h"
 
 /***************/
 /* DEFINITIONS */

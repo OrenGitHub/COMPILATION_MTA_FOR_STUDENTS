@@ -4,7 +4,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
+#include "util.h"
 
 typedef struct S_symbol_ *S_symbol;
 

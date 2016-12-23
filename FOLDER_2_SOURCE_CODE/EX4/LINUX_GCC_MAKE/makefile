@@ -32,8 +32,8 @@ LEXER_PROGRAM_FLAGS_RegAlloc   = -o$(REGALLOC_DIR)/RegAllocLexer.c
 # PARSER FLAGS #
 ################
 PARSER_PROGRAM_FLAGS_StarKist  = -d -v -o $(STARKIST_DIR)/StarKistParser.c
-PARSER_PROGRAM_FLAGS__CodeGen  = -d -v -o $(CODEGEN__DIR)/CodeGen_Parser.c
-PARSER_PROGRAM_FLAGS_RegAlloc  = -d -v -o $(REGALLOC_DIR)/RegAllocParser.c
+PARSER_PROGRAM_FLAGS__CodeGen  = -d -v -p zz -o $(CODEGEN__DIR)/CodeGen_Parser.c
+PARSER_PROGRAM_FLAGS_RegAlloc  = -d -v -p gg -o $(REGALLOC_DIR)/RegAllocParser.c
 
 #####################
 # LEXER INPUT FILES #
@@ -70,7 +70,7 @@ PARSER_OBJECT_FILES  := $(addprefix $(PARSER_OBJECT_DIR)/,$(PARSER_SOURCE_FILES,
 ############
 # COMPILER #
 ############
-COMPILER_FLAGS         = 
+COMPILER_FLAGS         = -I$(COMPILER_HEADER_DIR) -w
 COMPILER_PROGRAM       = compiler
 COMPILER_SOURCE_FILES := $(wildcard  $(COMPILER_SOURCE_DIR)/*.c)
 COMPILER_HEADER_FILES := $(wildcard  $(COMPILER_HEADER_DIR)/*.h)
@@ -105,6 +105,6 @@ all:
 	@printf "\n"
 	@printf "\n"
 	@printf "\n"
-	$(CC) $(COMPILER_FLAGS) ./FOLDER_5_COMPILER_SOURCE_FILES/util.c -o $(COMPILER_PROGRAM)
-
+	$(CC) $(COMPILER_FLAGS) $(COMPILER_SOURCE_FILES) -o $(COMPILER_PROGRAM)
+#	$(CC) $(COMPILER_FLAGS) $(COMPILER_SOURCE_DIR)/absyn.c -o $(COMPILER_PROGRAM)
 

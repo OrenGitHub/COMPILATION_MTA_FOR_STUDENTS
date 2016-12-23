@@ -1,9 +1,9 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/TEMPS_TO_REGS_errormsg.h"
-#include "../../../Compiler/HEADER_FILES/TEMPS_TO_REGS.h"
+#include "util.h"
+#include "TEMPS_TO_REGS_errormsg.h"
+/* #include "RegAllocParser.h" */
 
 #define alloca malloc
 

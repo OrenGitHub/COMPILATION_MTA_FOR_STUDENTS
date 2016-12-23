@@ -5,9 +5,9 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/frame.h"
-#include "../HEADER_FILES/temp.h"
+#include "util.h"
+#include "frame.h"
+#include "temp.h"
 
 /**************/
 /* CONST DATA */

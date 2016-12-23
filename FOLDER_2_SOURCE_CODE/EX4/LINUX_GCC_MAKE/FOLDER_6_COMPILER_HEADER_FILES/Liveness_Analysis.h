@@ -4,7 +4,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
+#include "util.h"
 
 void Liveness_Analysis(
 	string Pseudo_Assembley_Filename,

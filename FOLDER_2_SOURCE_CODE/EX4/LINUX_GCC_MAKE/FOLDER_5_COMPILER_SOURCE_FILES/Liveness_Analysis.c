@@ -18,11 +18,11 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/PSEUDO_MIPS_ASM_AST.h"
-#include "../HEADER_FILES/errormsg.h"
-#include "../HEADER_FILES/parse.h"
-#include "../HEADER_FILES/temp.h"
+#include "util.h"
+#include "PSEUDO_MIPS_ASM_AST.h"
+#include "errormsg.h"
+#include "parse.h"
+#include "temp.h"
 
 /***************/
 /* DEFINITIONS */
@@ -49,11 +49,6 @@ int out_tag[MAX_NUM_ASM_COMMANDS];
 /* GLOBAL VARIABLES */
 /********************/
 static PSEUDO_MIPS_ASM_AST_expList AST=NULL;
-
-/********************/
-/* GLOBAL VARIABLES */
-/********************/
-static int index=0;
 
 /********************/
 /* GLOBAL VARIABLES */

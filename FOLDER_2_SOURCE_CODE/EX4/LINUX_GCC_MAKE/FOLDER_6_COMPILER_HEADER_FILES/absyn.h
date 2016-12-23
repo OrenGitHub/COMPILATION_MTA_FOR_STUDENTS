@@ -8,7 +8,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/symbol.h"
+#include "symbol.h"
 
 /***************/
 /* DEFINITIONS */

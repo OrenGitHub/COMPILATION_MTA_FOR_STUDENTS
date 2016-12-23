@@ -2,9 +2,9 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/TEMPS_TO_REGS_errormsg.h"
-#include "../../../BISON/BISON_05_for_Register_Allocation/Bison/TEMPS_TO_REGS.tab.h"
+#include "util.h"
+#include "TEMPS_TO_REGS_errormsg.h"
+#include "RegAllocParser.h"
 
 int TEMPS_TO_REGS_charPos=1;
 

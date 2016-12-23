@@ -9,10 +9,10 @@
 /*************************/
 /* PROJECT INCLUDE FILES */
 /*************************/
-#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
-#include "../FOLDER_6_COMPILER_HEADER_FILES/StarKistParser.h"
+#include "util.h"
+#include "absyn.h"
+#include "errormsg.h"
+#include "StarKistParser.h"
 
 int charPos=1;
 

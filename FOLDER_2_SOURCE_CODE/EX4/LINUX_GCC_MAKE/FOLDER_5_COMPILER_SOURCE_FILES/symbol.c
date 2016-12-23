@@ -11,9 +11,9 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/table.h"
+#include "util.h"
+#include "symbol.h"
+#include "table.h"
 
 struct S_symbol_ {string name; S_symbol next;};
 

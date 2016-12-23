@@ -12,7 +12,7 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/temp.h"
+#include "temp.h"
 
 void Register_Allocation(char *interference_graph_filename, int Temporaries_To_Registers_Map[MAX_NUM_TEMPORARIES]);
 
