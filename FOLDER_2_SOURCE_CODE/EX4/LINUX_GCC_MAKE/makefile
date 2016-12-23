@@ -3,67 +3,52 @@
 ############
 CC=gcc
 
+######################
+# LEXER PARSER FLAGS #
+######################
+LEXER_PROGRAM_FLAGS   =
+PARSER_PROGRAM_FLAGS  = -d -v
+LEXER_INPUT_StarKist  = ./FOLDER_2_LEXER_PARSER_StarKist/StarKist.lex
+PARSER_INPUT_StarKist = ./FOLDER_2_LEXER_PARSER_StarKist/StarKist.y
+
 ###############
 # DIRECTORIES #
 ###############
 BASEDIR = .
-LEXER_PARSER_StarKist_DIR  = $(BASEDIR)/LEXER_PARSER_1_StarKist
-LEXER_StarKist_DIR         = $(LEXER_PARSER_StarKist_DIR)/Flex
-PARSER_StarKist_DIR        = $(LEXER_PARSER_StarKist_DIR)/Bison
-LEXER_StarKist_SOURCE_DIR  = $(LEXER_StarKist_DIR)/SOURCE_FILES
-LEXER_StarKist_HEADER_DIR  = $(LEXER_StarKist_DIR)/HEADER_FILES
-LEXER_StarKist_OBJECT_DIR  = $(LEXER_StarKist_DIR)/OBJECT_FILES
-PARSER_StarKist_SOURCE_DIR = $(PARSER_StarKist_DIR)/SOURCE_FILES
-PARSER_StarKist_HEADER_DIR = $(PARSER_StarKist_DIR)/HEADER_FILES
-PARSER_StarKist_OBJECT_DIR = $(PARSER_StarKist_DIR)/OBJECT_FILES
+LEXER_DIR         = $(BASEDIR)/FOLDER_0_Flex
+PARSER_DIR        = $(BASEDIR)/FOLDER_1_Bison
+LEXER_SOURCE_DIR  = $(LEXER_DIR)/SOURCE_FILES
+LEXER_HEADER_DIR  = $(LEXER_DIR)/HEADER_FILES
+LEXER_OBJECT_DIR  = $(LEXER_DIR)/OBJECT_FILES
+PARSER_SOURCE_DIR = $(PARSER_DIR)/SOURCE_FILES
+PARSER_HEADER_DIR = $(PARSER_DIR)/HEADER_FILES
+PARSER_OBJECT_DIR = $(PARSER_DIR)/OBJECT_FILES
 
-##################
-# StarKist LEXER #
-##################
-LEXER_FLAGS_StarKist               =
-LEXER_PROGRAM_StarKist             = Flex 
-LEXER_StarKist_SOURCE_FILES        = $(wildcard  $(LEXER_StarKist_SOURCE_DIR)/*.c)
-LEXER_StarKist_HEADER_FILES        = $(LEXER_StarKist_SOURCE_DIR)/*.h
-LEXER_StarKist_OBJECT_FILES        = $(addprefix $(LEXER_StarKist_OBJECT_DIR)/,$(LEXER_StarKist_SOURCE_FILES,.c=.o)))
+#########
+# LEXER #
+#########
+LEXER_FLAGS           = -I$(LEXER_HEADER_DIR) -w
+LEXER_PROGRAM         = MyFlex 
+LEXER_SOURCE_FILES   := $(wildcard  $(LEXER_SOURCE_DIR)/*.c)
+LEXER_HEADER_FILES   := $(wildcard  $(LEXER_HEADER_DIR)/*.h)
+LEXER_OBJECT_FILES   := $(addprefix $(LEXER_OBJECT_DIR)/,$(LEXER_SOURCE_FILES,.c=.o))
 
-###################
-# StarKist PARSER #
-###################
-PARSER_FLAGS_StarKist               =
-PARSER_PROGRAM_StarKist             = Bison 
-PARSER_StarKist_SOURCE_FILES        = $(wildcard  $(PARSER_StarKist_SOURCE_DIR)/*.c)
-PARSER_StarKist_HEADER_FILES        = $(PARSER_StarKist_HEADER_DIR)/*.h
-PARSER_StarKist_OBJECT_FILES        = $(addprefix $(PARSER_StarKist_OBJECT_DIR)/,$(LEXER_StarKist_SOURCE_FILES,.c=.o)))
+##########
+# PARSER #
+##########
+PARSER_FLAGS          = -I$(PARSER_HEADER_DIR) -w
+PARSER_PROGRAM        = MyBison 
+PARSER_SOURCE_FILES  := $(wildcard  $(PARSER_SOURCE_DIR)/*.c)
+PARSER_HEADER_FILES  := $(wildcard  $(PARSER_HEADER_DIR)/*.h)
+PARSER_OBJECT_FILES  := $(addprefix $(PARSER_OBJECT_DIR)/,$(PARSER_SOURCE_FILES,.c=.o))
 
 #########################
 # StarKist LEXER PARSER #
 #########################
-LEXER_PARSER_StarKist: $(LEXER_StarKist_OBJECT_FILES) $(PARSER_StarKist_OBJECT_FILES) $(LEXER_StarKist_HEADER_FILES) $(PARSER_StarKist_HEADER_FILES)
-	$(CC) $(LEXER_FLAGS_StarKist)  $(LEXER_StarKist_SOURCE_DIR)/$(LEXER_StarKist_SOURCE_FILES)
-	$(CC) $(PARSER_FLAGS_StarKist) $(PARSER_StarKist_SOURCE_DIR)/$(PARSER_StarKist_SOURCE_FILES)
-	$(PARSER_PROGRAM_StarKist) $(PARSER_PROGRAM_FLAGS_StarKist) $(PARSER_INPUT_StarKist)
-	$(LEXER_PROGRAM_StarKist)  $(LEXER_PROGRAM_FLAGS_StarKist)  $(LEXER_INPUT_StarKist)
+all: 
+	@$(CC) $(LEXER_FLAGS)  $(LEXER_SOURCE_FILES)  -o $(LEXER_PROGRAM)
+	@$(CC) $(PARSER_FLAGS) $(PARSER_SOURCE_FILES) -o $(PARSER_PROGRAM)
+	$(PARSER_PROGRAM) $(PARSER_PROGRAM_FLAGS_StarKist) $(PARSER_INPUT_StarKist)
+	$(LEXER_PROGRAM)  $(LEXER_PROGRAM_FLAGS_StarKist)  $(LEXER_INPUT_StarKist)
 
-########################
-# CodeGen LEXER PARSER #
-########################
-LEXER_PARSER_CodeGen: $(SOURCE_FILES_LEXER_PARSER_CodeGen) $(HEADER_FILES_LEXER_PARSER_CodeGen)
-	$(CC) $(LEXER_FLAGS_CodeGen)  $(SOURCE_FILES_LEXER_CodeGen)
-	$(CC) $(PARSER_FLAGS_CodeGen) $(SOURCE_FILES_PARSER_CodeGen)
-	$(PARSER_PROGRAM_CodeGen) $(PARSER_PROGRAM_FLAGS_CodeGen) $(PARSER_INPUT_CodeGen)
-	$(LEXER_PROGRAM_CodeGen)  $(LEXER_PROGRAM_FLAGS_CodeGen)  $(LEXER_INPUT_CodeGen)
 
-###################################
-# RegisterALlocation LEXER PARSER #
-###################################
-LEXER_PARSER_RegisterAllocation: $(SOURCE_FILES_LEXER_PARSER_RegisterAllocation) $(HEADER_FILES_LEXER_PARSER_RegisterAllocation)
-	$(CC) $(LEXER_FLAGS_RegisterAllocation)  $(SOURCE_FILES_LEXER_RegisterAllocation)
-	$(CC) $(PARSER_FLAGS_RegisterAllocation) $(SOURCE_FILES_PARSER_RegisterAllocation)
-	$(PARSER_PROGRAM_RegisterAllocation) $(PARSER_PROGRAM_FLAGS_RegisterAllocation) $(PARSER_INPUT_RegisterAllocation)
-	$(LEXER_PROGRAM_RegisterAllocation)  $(LEXER_PROGRAM_FLAGS_RegisterAllocation)  $(LEXER_INPUT_RegisterAllocation)
-
-############
-# Compiler #
-############
-Compiler: LEXER_PARSER_StarKist LEXER_PARSER_CodeGen LEXER_PARSER_RegisterAllocation
-	$(CC) $(COMPILER_FLAGS) $(COMPILER_SRC_FILES)
