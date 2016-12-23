@@ -17,9 +17,9 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/symbol.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/symbol.h"
 
 /********************/
 /* GLOBAL VARIABLES */

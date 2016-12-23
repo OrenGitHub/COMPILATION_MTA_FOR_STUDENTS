@@ -16,10 +16,10 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/temp.h"
-#include "../HEADER_FILES/tree.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/symbol.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/temp.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/tree.h"
 
 /********************/
 /* GLOBAL VARIABLES */

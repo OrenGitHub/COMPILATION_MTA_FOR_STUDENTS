@@ -12,14 +12,14 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/frame.h"
-#include "../HEADER_FILES/tree.h"
-#include "../HEADER_FILES/types.h"
-#include "../HEADER_FILES/env.h"
-#include "../HEADER_FILES/semant.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/errormsg.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/frame.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/tree.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/types.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/env.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/semant.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/symbol.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
 
 /**************************/
 /* FUNCTIONS DECLARATIONS */

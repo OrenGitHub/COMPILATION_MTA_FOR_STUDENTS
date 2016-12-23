@@ -97,5 +97,14 @@ all:
 	@mv $(STARKIST_DIR)/StarKistParser.h $(COMPILER_HEADER_DIR)
 	@mv $(CODEGEN__DIR)/CodeGen_Parser.h $(COMPILER_HEADER_DIR)
 	@mv $(REGALLOC_DIR)/RegAllocParser.h $(COMPILER_HEADER_DIR)
+	@printf "\n"
+	@printf "\n"
+	@printf "\n"
+	@pwd
+	@printf "\n"
+	@printf "\n"
+	@printf "\n"
+	@printf "\n"
+	$(CC) $(COMPILER_FLAGS) ./FOLDER_5_COMPILER_SOURCE_FILES/util.c -o $(COMPILER_PROGRAM)
 
 

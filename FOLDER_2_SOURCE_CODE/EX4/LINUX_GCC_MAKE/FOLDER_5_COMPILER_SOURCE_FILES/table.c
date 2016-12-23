@@ -13,8 +13,8 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/table.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/table.h"
 
 #define TABSIZE 127
 

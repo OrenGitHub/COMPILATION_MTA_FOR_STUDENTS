@@ -11,19 +11,19 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/asm.h"
-#include "../HEADER_FILES/IR.h"
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/tree.h"
-#include "../HEADER_FILES/symbol.h"
-#include "../HEADER_FILES/semant.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/errormsg.h"
-#include "../HEADER_FILES/parse.h"
-#include "../HEADER_FILES/Liveness_Analysis.h"
-#include "../HEADER_FILES/Register_Allocation.h"
-#include "../HEADER_FILES/Pseudo_Assembley_To_Simulation.h"
-#include "../HEADER_FILES/Write_Assembley_Output_Filename.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/asm.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/IR.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/tree.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/symbol.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/semant.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/parse.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/Liveness_Analysis.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/Register_Allocation.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/Pseudo_Assembley_To_Simulation.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/Write_Assembley_Output_Filename.h"
 
 /********************/
 /* GLOBAL VARIABLES */

@@ -9,10 +9,10 @@
 /*************************/
 /* PROJECT INCLUDE FILES */
 /*************************/
-#include "../../../Compiler/HEADER_FILES/util.h"
-#include "../../../Compiler/HEADER_FILES/absyn.h"
-#include "../../../Compiler/HEADER_FILES/errormsg.h"
-#include "../../../BISON/BISON_03_for_Tiger_Compiler/Bison/tiger.tab.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/StarKistParser.h"
 
 int charPos=1;
 

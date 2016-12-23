@@ -12,12 +12,12 @@
 /*****************/
 /* INCLUDE FILES */
 /*****************/
-#include "../HEADER_FILES/util.h"
-#include "../HEADER_FILES/temp.h"
-#include "../HEADER_FILES/absyn.h"
-#include "../HEADER_FILES/parse.h"
-#include "../Header_FILES/frame.h"
-#include "../HEADER_FILES/errormsg.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/util.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/temp.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/absyn.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/parse.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/frame.h"
+#include "../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h"
 
 #define MAX_NAME_LENGTH_OF_TEMPORARY_OR_REGISTER 16
 /********************/
