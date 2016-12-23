@@ -113,7 +113,7 @@ openfiles()
 #if defined (VMS) & !defined (__VMS_POSIX)
   char *tmp_base = "sys$scratch:b_";
 #else
-  char *tmp_base = "./tmp/b.";
+  char *tmp_base = "./FOLDER_1_Bison/tmp/b.";
 #endif
   int tmp_len;
 
@@ -207,7 +207,7 @@ openfiles()
           strcpy(cp, PFILE);
         }
 #endif /* MSDOS */
-      fparser = tryopen(filename ? filename : "bison.simple", "r");
+      fparser = tryopen(filename ? filename : "./FOLDER_1_Bison/bison.simple", "r");
     }
 
   if (verboseflag)
