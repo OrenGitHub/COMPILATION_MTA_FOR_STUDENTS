@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="../../FOLDER_8_INPUT_PROGRAMS/Input.txt" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -20,6 +21,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="../../FOLDER_8_INPUT_PROGRAMS/Input.txt" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
@@ -49,9 +51,6 @@
 		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGen_Lexer.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGen_Parser.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/IR.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -77,9 +76,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/RegAllocLexer.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/RegAllocParser.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/Register_Allocation.c">

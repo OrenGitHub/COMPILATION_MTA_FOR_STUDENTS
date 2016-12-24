@@ -21,7 +21,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-o../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGenLexer.c" />
+				<Option parameters="-o../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGen_Lexer.c CodeGen.lex" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>
