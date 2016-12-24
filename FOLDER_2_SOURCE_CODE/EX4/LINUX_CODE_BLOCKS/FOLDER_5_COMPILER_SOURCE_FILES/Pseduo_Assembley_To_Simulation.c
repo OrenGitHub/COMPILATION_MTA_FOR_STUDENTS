@@ -320,7 +320,7 @@ void CodeGenerationExp(PSEUDO_MIPS_ASM_AST_exp exp)
 	}
 }
 
-void AST_To_Simulation(PSEUDO_MIPS_ASM_AST_expList AST)
+void AST_To_Simulation(PSEUDO_MIPS_ASM_AST_expList AST, string simulation_filename)
 {
 	int i;
 
@@ -329,7 +329,7 @@ void AST_To_Simulation(PSEUDO_MIPS_ASM_AST_expList AST)
 	/*************************************/
 	/* [1] Open simulation.c for writing */
 	/*************************************/
-	fl=fopen("simulation.c","w+t");
+	fl=fopen(simulation_filename,"w+t");
 	if (fl == NULL) return;
 
 	/***********************/
@@ -413,7 +413,7 @@ void AST_To_Simulation(PSEUDO_MIPS_ASM_AST_expList AST)
 /**********************************/
 /* Pseduo_Assembley_To_Simulation */
 /**********************************/
-void Pseudo_Assembley_To_Simulation(string Pseudo_Assembley_Filename)
+void Pseudo_Assembley_To_Simulation(string Pseudo_Assembley_Filename, string simulation_filename)
 {
 	/**********************************/
 	/* [1] Build Abstract Syntax Tree */
@@ -423,5 +423,5 @@ void Pseudo_Assembley_To_Simulation(string Pseudo_Assembley_Filename)
 	/***************************/
 	/* [2] AST To simulation.c */
 	/***************************/
-	AST_To_Simulation(AST);
+	AST_To_Simulation(AST,simulation_filename);
 }

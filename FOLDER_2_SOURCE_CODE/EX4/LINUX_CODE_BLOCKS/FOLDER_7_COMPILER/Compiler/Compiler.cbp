@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="../../FOLDER_8_INPUT_PROGRAMS/Input.txt" />
+				<Option parameters="../../FOLDER_8_INPUT_PROGRAMS/Input.txt ../../FOLDER_10_OUTPUT_ASM/output.s" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
