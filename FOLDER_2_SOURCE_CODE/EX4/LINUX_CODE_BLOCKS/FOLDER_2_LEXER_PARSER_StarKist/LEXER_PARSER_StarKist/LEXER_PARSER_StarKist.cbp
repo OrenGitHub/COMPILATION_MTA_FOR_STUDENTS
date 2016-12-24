@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="LEXER_PARSER_StarKist" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/LEXER_PARSER_StarKist" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="-o../../FOLDER_5_COMPILER_SOURCE_FILES/StarKistLexer.c StarKist.lex" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/LEXER_PARSER_StarKist" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="-o../../FOLDER_5_COMPILER_SOURCE_FILES/StarKistLexer.c StarKist.lex" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/FlexLexer.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/config.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/errormsg.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/flexdef.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/parse.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/tokens.h" />
+		<Unit filename="../../FOLDER_0_Flex/HEADER_FILES/version.h" />
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/ccl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/dfa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/ecs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/gen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/initscan.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/misc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/nfa.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/parse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/skel.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/sym.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/tblcmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_0_Flex/SOURCE_FILES/yylex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
