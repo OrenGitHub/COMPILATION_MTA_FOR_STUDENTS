@@ -21,7 +21,7 @@
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="-d -v -o ../../FOLDER_5_COMPILER_SOURCE_FILES/StarKistParser.c StarKist.y" />
+				<Option parameters="-d -v -o StarKistParser.c StarKist.y" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>

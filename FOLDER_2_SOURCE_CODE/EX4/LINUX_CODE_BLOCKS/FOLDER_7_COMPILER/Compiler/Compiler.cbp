@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Compiler" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Compiler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Compiler" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../../FOLDER_2_LEXER_PARSER_StarKist/PARSER_StarKist/StarKistParser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_2_LEXER_PARSER_StarKist/PARSER_StarKist/StarKistParser.h" />
+		<Unit filename="../../FOLDER_3_LEXER_PARSER_CodeGen/PARSER_CodeGen/CodeGen_Parser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_3_LEXER_PARSER_CodeGen/PARSER_CodeGen/CodeGen_Parser.h" />
+		<Unit filename="../../FOLDER_4_LEXER_PARSER_RegisterAllocation/PARSER_RegAlloc/RegAllocParser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_4_LEXER_PARSER_RegisterAllocation/PARSER_RegAlloc/RegAllocParser.h" />
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/ABSYN_Print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGen_Lexer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/CodeGen_Parser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/IR.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/IR_Print.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/Liveness_Analysis.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/MIPS_asm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/MIPS_frame.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/PSEUDO_MIPS_ASM_AST.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/PSEUDO_MIPS_ASM_AST_errormsg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/Pseduo_Assembley_To_Simulation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/RegAllocLexer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/RegAllocParser.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/Register_Allocation.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/StarKistLexer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/TEMPS_TO_REGS_errormsg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/Write_Assembley_Output_File.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/absyn.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/env.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/errormsg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/parse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/semant.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/symbol.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/table.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/temp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/tree.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/types.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_5_COMPILER_SOURCE_FILES/util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/CodeGen_Parser.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/IR.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/Liveness_Analysis.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/PSEUDO_MIPS_ASM_AST.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/PSEUDO_MIPS_ASM_AST_errormsg.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/Pseudo_Assembley_To_Simulation.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/RegAllocParser.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/Register_Allocation.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/StarKistParser.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/TEMPS_TO_REGS_errormsg.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/Write_Assembley_Output_Filename.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/absyn.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/asm.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/env.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/errormsg.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/frame.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/parse.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/semant.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/symbol.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/table.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/temp.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/tree.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/types.h" />
+		<Unit filename="../../FOLDER_6_COMPILER_HEADER_FILES/util.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
