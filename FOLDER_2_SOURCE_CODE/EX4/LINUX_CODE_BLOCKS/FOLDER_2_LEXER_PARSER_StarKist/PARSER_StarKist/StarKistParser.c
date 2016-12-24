@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y
+/*  A Bison parser, made from StarKist.y
  by  GNU Bison version 1.25
   */
 
@@ -50,7 +50,7 @@
 #define	VAR	300
 #define	TYPE	301
 
-#line 1 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 1 "StarKist.y"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,7 +70,7 @@ void yyerror(char *s)
  EM_error(EM_tokPos, "%s", s);
 }
 
-#line 22 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 22 "StarKist.y"
 typedef union
 {
 	union
@@ -843,271 +843,271 @@ yyreduce:
   switch (yyn) {
 
 case 1:
-#line 117 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 117 "StarKist.y"
 {absyn_root = yyvsp[0].gval.exp;;
     break;}
 case 2:
-#line 119 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 119 "StarKist.y"
 {yyval.gval.exp = A_IntExp(EM_tokPos,yyvsp[0].gval.ival);;
     break;}
 case 3:
-#line 120 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 120 "StarKist.y"
 {yyval.gval.exp = A_FloatExp(EM_tokPos,yyvsp[0].gval.fval);;
     break;}
 case 4:
-#line 121 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 121 "StarKist.y"
 {yyval.gval.exp = A_StringExp(EM_tokPos,yyvsp[0].gval.sval);;
     break;}
 case 5:
-#line 122 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 122 "StarKist.y"
 {yyval.gval.exp = A_VarExp(EM_tokPos,yyvsp[0].gval.var);;
     break;}
 case 6:
-#line 123 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 123 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 7:
-#line 124 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 124 "StarKist.y"
 {yyval.gval.exp = yyvsp[-1].gval.exp;;
     break;}
 case 8:
-#line 125 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 125 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 9:
-#line 126 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 126 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 10:
-#line 127 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 127 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 11:
-#line 128 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 128 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 12:
-#line 129 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 129 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 13:
-#line 130 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 130 "StarKist.y"
 {yyval.gval.exp = yyvsp[0].gval.exp;;
     break;}
 case 14:
-#line 131 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 131 "StarKist.y"
 {yyval.gval.exp = A_NilExp(EM_tokPos);;
     break;}
 case 15:
-#line 133 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 133 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_plusOp,   yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 16:
-#line 134 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 134 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_minusOp,  yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 17:
-#line 135 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 135 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_timesOp,  yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 18:
-#line 136 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 136 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_divideOp, yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 19:
-#line 137 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 137 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_eqOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 20:
-#line 138 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 138 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_neqOp,    yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 21:
-#line 139 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 139 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_ltOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 22:
-#line 140 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 140 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_leOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 23:
-#line 141 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 141 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_gtOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 24:
-#line 142 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 142 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_geOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 25:
-#line 143 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 143 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_andOp,    yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 26:
-#line 144 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 144 "StarKist.y"
 {yyval.gval.exp = A_OpExp(EM_tokPos, A_orOp,     yyvsp[-2].gval.exp, yyvsp[0].gval.exp);;
     break;}
 case 27:
-#line 146 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 146 "StarKist.y"
 {yyval.gval.exp = A_IfExp(EM_tokPos,yyvsp[-2].gval.exp,yyvsp[0].gval.exp,NULL);;
     break;}
 case 28:
-#line 148 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 148 "StarKist.y"
 {yyval.gval.exp = A_ForExp(EM_tokPos,S_Symbol(yyvsp[-6].gval.sval),yyvsp[-4].gval.exp,yyvsp[-2].gval.exp,yyvsp[0].gval.exp);;
     break;}
 case 29:
-#line 150 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 150 "StarKist.y"
 {yyval.gval.expList = A_ExpList(yyvsp[-2].gval.exp,yyvsp[0].gval.expList);;
     break;}
 case 30:
-#line 151 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 151 "StarKist.y"
 {yyval.gval.expList = A_ExpList(yyvsp[-2].gval.exp,A_ExpList(yyvsp[0].gval.exp,NULL));;
     break;}
 case 31:
-#line 153 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 153 "StarKist.y"
 {yyval.gval.expList = A_ExpList(yyvsp[-2].gval.exp,yyvsp[0].gval.expList);;
     break;}
 case 32:
-#line 154 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 154 "StarKist.y"
 {yyval.gval.expList = A_ExpList(yyvsp[0].gval.exp,NULL);;
     break;}
 case 33:
-#line 156 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 156 "StarKist.y"
 {yyval.gval.exp = A_SeqExp(EM_tokPos,yyvsp[-1].gval.expList);;
     break;}
 case 34:
-#line 158 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 158 "StarKist.y"
 {yyval.gval.fieldList = A_FieldList(A_Field(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),S_Symbol(yyvsp[-2].gval.sval)),yyvsp[0].gval.fieldList);;
     break;}
 case 35:
-#line 159 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 159 "StarKist.y"
 {yyval.gval.fieldList = A_FieldList(A_Field(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),S_Symbol(yyvsp[0].gval.sval)),NULL);;
     break;}
 case 36:
-#line 161 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 161 "StarKist.y"
 {yyval.gval.dec = A_NameTypeDec(  EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),S_Symbol(yyvsp[0].gval.sval));;
     break;}
 case 37:
-#line 162 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 162 "StarKist.y"
 {yyval.gval.dec = A_ArrayTypeDec( EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),S_Symbol(yyvsp[0].gval.sval));;
     break;}
 case 38:
-#line 163 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 163 "StarKist.y"
 {yyval.gval.dec = A_RecordTypeDec(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),yyvsp[-1].gval.fieldList);;
     break;}
 case 39:
-#line 165 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 165 "StarKist.y"
 {yyval.gval.exp = A_AllocateArrayExp(EM_tokPos,S_Symbol(yyvsp[-5].gval.sval),yyvsp[-3].gval.ival,0);;
     break;}
 case 40:
-#line 166 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 166 "StarKist.y"
 {yyval.gval.exp = A_AllocateArrayExp(EM_tokPos,S_Symbol(yyvsp[-5].gval.sval),yyvsp[-3].gval.ival,yyvsp[0].gval.ival);;
     break;}
 case 41:
-#line 167 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 167 "StarKist.y"
 {yyval.gval.exp = A_AllocateArrayExp(EM_tokPos,S_Symbol(yyvsp[-5].gval.sval),yyvsp[-3].gval.ival,2);;
     break;}
 case 42:
-#line 169 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 169 "StarKist.y"
 {yyval.gval.exp = A_AllocateRecordExp(EM_tokPos,S_Symbol(yyvsp[-3].gval.sval),yyvsp[-1].gval.expList);;
     break;}
 case 43:
-#line 171 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 171 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),S_Symbol(yyvsp[0].gval.sval),NULL);;
     break;}
 case 44:
-#line 172 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 172 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),NULL,             yyvsp[0].gval.exp);;
     break;}
 case 45:
-#line 173 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 173 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),NULL,             yyvsp[0].gval.exp);;
     break;}
 case 46:
-#line 174 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 174 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),NULL,             yyvsp[0].gval.exp);;
     break;}
 case 47:
-#line 175 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 175 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),S_Symbol(yyvsp[-2].gval.sval),yyvsp[0].gval.exp);;
     break;}
 case 48:
-#line 176 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 176 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),S_Symbol(yyvsp[-2].gval.sval),yyvsp[0].gval.exp);;
     break;}
 case 49:
-#line 177 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 177 "StarKist.y"
 {yyval.gval.dec = A_VarDec(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),S_Symbol(yyvsp[-2].gval.sval),yyvsp[0].gval.exp);;
     break;}
 case 50:
-#line 179 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 179 "StarKist.y"
 {yyval.gval.dec = A_FunDec(EM_tokPos,S_Symbol(yyvsp[-4].gval.sval),NULL,NULL,yyvsp[0].gval.exp);;
     break;}
 case 51:
-#line 180 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 180 "StarKist.y"
 {yyval.gval.dec = A_FunDec(EM_tokPos,S_Symbol(yyvsp[-6].gval.sval),NULL,S_Symbol(yyvsp[-2].gval.sval),yyvsp[0].gval.exp);;
     break;}
 case 52:
-#line 181 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 181 "StarKist.y"
 {yyval.gval.dec = A_FunDec(EM_tokPos,S_Symbol(yyvsp[-5].gval.sval),yyvsp[-3].gval.fieldList,NULL,yyvsp[0].gval.exp);;
     break;}
 case 53:
-#line 182 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 182 "StarKist.y"
 {yyval.gval.dec = A_FunDec(EM_tokPos,S_Symbol(yyvsp[-7].gval.sval),yyvsp[-5].gval.fieldList,S_Symbol(yyvsp[-2].gval.sval),yyvsp[0].gval.exp);;
     break;}
 case 54:
-#line 184 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 184 "StarKist.y"
 {yyval.gval.dec = yyvsp[0].gval.dec;;
     break;}
 case 55:
-#line 185 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 185 "StarKist.y"
 {yyval.gval.dec = yyvsp[0].gval.dec;;
     break;}
 case 56:
-#line 186 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 186 "StarKist.y"
 {yyval.gval.dec = yyvsp[0].gval.dec;;
     break;}
 case 57:
-#line 188 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 188 "StarKist.y"
 {yyval.gval.decList = A_DecList(yyvsp[-1].gval.dec,yyvsp[0].gval.decList);;
     break;}
 case 58:
-#line 189 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 189 "StarKist.y"
 {yyval.gval.decList = A_DecList(yyvsp[0].gval.dec,NULL);;
     break;}
 case 59:
-#line 191 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 191 "StarKist.y"
 {yyval.gval.exp = A_LetExp(EM_tokPos,yyvsp[-3].gval.decList,yyvsp[-1].gval.exp);;
     break;}
 case 60:
-#line 193 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 193 "StarKist.y"
 {yyval.gval.var = A_SimpleVar(EM_tokPos,S_Symbol(yyvsp[0].gval.sval));;
     break;}
 case 61:
-#line 194 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 194 "StarKist.y"
 {yyval.gval.var = A_FieldVar(EM_tokPos,yyvsp[-2].gval.var,S_Symbol(yyvsp[0].gval.sval));;
     break;}
 case 62:
-#line 195 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 195 "StarKist.y"
 {yyval.gval.var = A_SubscriptVar(EM_tokPos,yyvsp[-3].gval.var,yyvsp[-1].gval.exp);;
     break;}
 case 63:
-#line 197 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 197 "StarKist.y"
 {yyval.gval.exp = A_AssignExp(EM_tokPos,yyvsp[-2].gval.var,yyvsp[0].gval.exp);;
     break;}
 case 64:
-#line 198 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 198 "StarKist.y"
 {yyval.gval.exp = A_AssignExp(EM_tokPos,yyvsp[-2].gval.var,yyvsp[0].gval.exp);;
     break;}
 case 65:
-#line 199 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 199 "StarKist.y"
 {yyval.gval.exp = A_AssignExp(EM_tokPos,yyvsp[-2].gval.var,yyvsp[0].gval.exp);;
     break;}
 case 66:
-#line 201 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 201 "StarKist.y"
 {yyval.gval.exp = A_CallExp(EM_tokPos,S_Symbol(yyvsp[-2].gval.sval),NULL);;
     break;}
 case 67:
-#line 202 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 202 "StarKist.y"
 {yyval.gval.exp = A_CallExp(EM_tokPos,S_Symbol(yyvsp[-3].gval.sval),yyvsp[-1].gval.expList);;
     break;}
 }
@@ -1308,5 +1308,5 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 204 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_2_LEXER_PARSER_StarKist/StarKist.y"
+#line 204 "StarKist.y"
 
