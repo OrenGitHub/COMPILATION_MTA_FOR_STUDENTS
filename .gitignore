@@ -1,9 +1,8 @@
 *.exe
 *.pdb
-**/tmp/*
+**/tmp/b.*
 *~
-compiler
 *.o
 *.obj
 **/bin/*
-**/FOLDER_9_INTERMEDIATE_FILES/*
+
