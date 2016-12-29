@@ -64,7 +64,7 @@ int main(int argc,char **argv)
 	/*************************/
 	/* [2] Semantic Analysis */
 	/*************************/
-	Semantic_Analysis(AST);
+	// Semantic_Analysis(AST);
 
 	/***********************************/
 	/* [3] Intermediate Representation */
