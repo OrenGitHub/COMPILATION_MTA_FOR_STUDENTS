@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{hyperref}
+\title{Exercise 4}
+\author{IR and Code Generation}
+\date{The definitive guide}
+\begin{document}
+\maketitle
+\section*{Programming Assignment}
+Fill in the missing parts to obtain a full functioning IR and code generation.
+For the IR part, you need to handle function declarations,
+and implement a run time protection mechanism against the following hazardous operations:
+$(1)$ dereferencing a field of an unallocated object.
+$(2)$ accessing an array outside of its bounds.
+When the program identifies one of these behaviors, it should print a relevant error message and abort immediately.
+For the code generation part you will need to implement two things:
+$(1)$ allocation of arrays, records and classes.
+$(2)$ calling simple functions and class member functions
+
+
+
+\section*{Details}
+The code that handles function declarations is inside \verb"IR_transFuncDec".
+The code that handles the run time protection mechanism is inside \verb"IR_transVarExp".
+
+\section*{Submission Guidelines}
+Open an account on \href{https://github.com/}{GitHub}.
+Then, visit the
+\href{https://education.github.com/discount_requests/new}{academic discount page}
+to enable the free creation of private repositories.
+One team member should create a new private repository called COMPILATION,
+and then invite other team members and me as collaborators.
+My username is OrenGitHub.
+Please make sure the uppermost folder (COMPILATION) contains a text file ``IDS.text" with the IDs of all team members (one ID per line).
+Inside COMPILATION create a sub directory EX4 which will contain your source code and makefile.
+Your program should be called compiler, and accept two input file names:\\ \\
+\verb"compiler" \verb"<Input.StarKist.txt>" \verb"<Output.PseudoMIPS.txt>"
+\end{document}
