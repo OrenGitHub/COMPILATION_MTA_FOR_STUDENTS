@@ -1,5 +1,5 @@
 
-/*  A Bison parser, made from /home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegisterAllocation/RegAlloc.y
+/*  A Bison parser, made from /home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegAlloc/RegAlloc.y
  by  GNU Bison version 1.25
   */
 
@@ -21,7 +21,7 @@
 #define	RPAREN	264
 #define	ANY_OTHER_THING	265
 
-#line 1 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegisterAllocation/RegAlloc.y"
+#line 1 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegAlloc/RegAlloc.y"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,7 +46,7 @@ void ggerror(char *s)
 	TEMPS_TO_REGS_EM_error(TEMPS_TO_REGS_EM_tokPos, "%s", s);
 }
 
-#line 26 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegisterAllocation/RegAlloc.y"
+#line 26 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegAlloc/RegAlloc.y"
 typedef union
 {
 	union
@@ -856,7 +856,7 @@ yyerrhandle:
   yystate = yyn;
   goto yynewstate;
 }
-#line 53 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegisterAllocation/RegAlloc.y"
+#line 53 "/home/oren/GIT/COMPILATION_MTA_FOR_STUDENTS/FOLDER_2_SOURCE_CODE/EX4/LINUX_GCC_MAKE/FOLDER_4_LEXER_PARSER_RegAlloc/RegAlloc.y"
 
 
 	

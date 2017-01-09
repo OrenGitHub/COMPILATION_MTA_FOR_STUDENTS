@@ -3,6 +3,12 @@
 **/tmp/b.*
 *~
 *.o
+*.jpeg
+**/MyFlex
+**/MyBison
 *.obj
 **/bin/*
 *.output
+**/compiler
+**/RegAllocLexer.c
+**/RegAllocParser.c
