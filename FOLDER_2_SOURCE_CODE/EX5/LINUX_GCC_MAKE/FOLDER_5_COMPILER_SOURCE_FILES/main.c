@@ -58,8 +58,8 @@ int main(int argc,char **argv)
 	/***************************************************/
 	/* [1] Build Abstract Syntax Tree Of Tiger Program */
 	/***************************************************/
-	AST = Tiger_Program_To_AST(Tiger_Program_Filename);
-	ABSYN_PrintTree(AST,GRAPHVIZ_AST_FILENAME);
+	//AST = Tiger_Program_To_AST(Tiger_Program_Filename);
+	//ABSYN_PrintTree(AST,GRAPHVIZ_AST_FILENAME);
 
 	/*************************/
 	/* [2] Semantic Analysis */
@@ -69,44 +69,44 @@ int main(int argc,char **argv)
 	/***********************************/
 	/* [3] Intermediate Representation */
 	/***********************************/
-	IR_tree = AST_To_IR(AST);
-	IR_PrintTree(IR_tree,GRAPHVIZ_IR_FILENAME);
+	//IR_tree = AST_To_IR(AST);
+	//IR_PrintTree(IR_tree,GRAPHVIZ_IR_FILENAME);
 
 	/***********************/
 	/* [4] Code Generation */
 	/***********************/
-	IR_To_Pseudo_Assembley(
-		IR_tree,
-		PSEUDO_ASM_FILENAME);
+	//IR_To_Pseudo_Assembley(
+		//IR_tree,
+		//PSEUDO_ASM_FILENAME);
 
 	/***********************************************/
 	/* [5] Generate PC Simulation for unit testing */
 	/***********************************************/
 	Pseudo_Assembley_To_Simulation(
-		PSEUDO_ASM_FILENAME,
-		SIMULATION_C_FILENAME);
+		argv[1],//PSEUDO_ASM_FILENAME,
+		argv[2]);//SIMULATION_C_FILENAME);
 
 	/**********************************************/
 	/* [6] Liveness Analysis & Interference Graph */
 	/**********************************************/
-	Liveness_Analysis(
-		PSEUDO_ASM_FILENAME,
-		LIVENESS_ANALYSIS_FILENAME,
-		INTERFERENCE_GRAPH_FILENAME);
+	//Liveness_Analysis(
+		//PSEUDO_ASM_FILENAME,
+		//LIVENESS_ANALYSIS_FILENAME,
+		//INTERFERENCE_GRAPH_FILENAME);
 
 	/***************************/
 	/* [7] Register Allocation */
 	/***************************/
-	Register_Allocation(
-		INTERFERENCE_GRAPH_FILENAME,
-		Temporaries_To_Registers_Map);
+	//Register_Allocation(
+		//INTERFERENCE_GRAPH_FILENAME,
+		//Temporaries_To_Registers_Map);
 
 	/****************************/
 	/* [8] Write Assembley File */
 	/****************************/
-	Write_Assembley_Output_File(
-		PSEUDO_ASM_FILENAME,
-		Temporaries_To_Registers_Map,
-		Mips_Asm_Output_Filename);
+	//Write_Assembley_Output_File(
+		//PSEUDO_ASM_FILENAME,
+		//Temporaries_To_Registers_Map,
+		//Mips_Asm_Output_Filename);
 }
 
