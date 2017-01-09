@@ -98,14 +98,5 @@ all:
 	@mv $(STARKIST_DIR)/StarKistParser.h $(COMPILER_HEADER_DIR)
 	@mv $(CODEGEN__DIR)/CodeGen_Parser.h $(COMPILER_HEADER_DIR)
 	@mv $(REGALLOC_DIR)/RegAllocParser.h $(COMPILER_HEADER_DIR)
-	@printf "\n"
-	@printf "\n"
-	@printf "\n"
-	@pwd
-	@printf "\n"
-	@printf "\n"
-	@printf "\n"
-	@printf "\n"
-	$(CC) $(COMPILER_FLAGS) $(COMPILER_SOURCE_FILES) -o $(COMPILER_PROGRAM)
-#	$(CC) $(COMPILER_FLAGS) $(COMPILER_SOURCE_DIR)/absyn.c -o $(COMPILER_PROGRAM)
+	@$(CC) $(COMPILER_FLAGS) $(COMPILER_SOURCE_FILES) -o $(COMPILER_PROGRAM)
 
