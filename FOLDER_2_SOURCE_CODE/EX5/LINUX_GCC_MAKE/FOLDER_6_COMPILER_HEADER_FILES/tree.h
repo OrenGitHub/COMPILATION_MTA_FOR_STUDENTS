@@ -42,7 +42,6 @@ typedef enum {
 	T_numBinOps,
 	T_invalidBinop,
 } T_binOp;
-
 typedef enum
 {
 	T_SEQ,
@@ -59,7 +58,6 @@ typedef enum
 	T_CALL,
 	T_FUNCTION,
 } T_ExpType;
-
 typedef enum
 {
 	T_JUMP_REGISTER,
@@ -148,22 +146,18 @@ struct T_exp_
 	} u;
 };
 
-T_expList T_ExpList(T_exp head, T_expList tail);
-
+T_exp T_Mem(T_exp);
+T_exp T_Const(int i);
+T_exp T_Temp(Temp_temp);
 T_exp T_Label(Temp_label);
+T_exp T_Move(T_exp dst, T_exp src);
 T_exp T_JumpLabel(Temp_label label);
 T_exp T_JumpRegister(Temp_temp temp);
-T_exp T_Cjump(T_binOp op,T_exp left,T_exp right,Temp_label jumpToHereIfTrue,Temp_label jumpToHereIfFalse);
-T_exp T_Move(T_exp dst, T_exp src);
-T_exp T_Exp(T_exp);
-
 T_exp T_Seq(T_exp left, T_exp right);
-T_exp T_Binop(T_binOp, T_exp left, T_exp right);
-T_exp T_Mem(T_exp);
-T_exp T_Temp(Temp_temp);
-T_exp T_Name(Temp_label label);
-T_exp T_Const(int i);
 T_exp T_Call(Temp_label name, T_expList args);
+T_exp T_Binop(T_binOp, T_exp left, T_exp right);
+T_expList T_ExpList(T_exp head, T_expList tail);
 T_exp T_Function(T_exp prologue, T_exp body, T_exp epilogue, Temp_label name);
+T_exp T_Cjump(T_binOp op, T_exp left, T_exp right, Temp_label jumpToHereIfTrue, Temp_label jumpToHereIfFalse);
 
 #endif
