@@ -1,0 +1,68 @@
+digraph
+{
+graph [ordering = "out"]
+v22 [label = "LET"];
+v22 -> v16;
+v16 [label = "Dec
+List"];
+v16 -> v6;
+v6 [label = "Record Type
+Declaration
+
+address = "];
+v6 -> v5;
+v5 [label = "Type
+Fields"];
+v5 -> v4;
+v4 [label = "Apt:int"];
+v5 -> v3;
+v3 [label = "Type
+Fields"];
+v3 -> v2;
+v2 [label = "rent:int"];
+v3 -> v1;
+v1 [label = "Type
+Fields"];
+v1 -> v0;
+v0 [label = "ZIP:int"];
+v16 -> v15;
+v15 [label = "Dec
+List"];
+v15 -> v14;
+v14 v14 [label = "Variable
+Declaration
+
+(home : address)"];
+v14 -> v13;
+v13 [label = "Allocate
+Record( address )"];
+v13 -> v12;
+v12 [label = "Exp
+List"];
+v12 -> v7;
+v7 [label = "INT(19)"];
+v12 -> v11;
+v11 [label = "Exp
+List"];
+v11 -> v8;
+v8 [label = "INT(7500)"];
+v11 -> v10;
+v10 [label = "Exp
+List"];
+v10 -> v9;
+v9 [label = "INT(6701)"];
+v22 -> v21;
+v21 [label = "CALL
+(PrintInt)"];
+v21 -> v20;
+v20 [label = "Exp
+List"];
+v20 -> v19;
+v19 [label = "FIELD
+VAR
+... --> ZIP"];
+v19 -> v17;
+v17 [label = "Simple
+Var(home)"];
+
+}

@@ -1,0 +1,61 @@
+digraph
+{
+graph [ordering = "out"]
+v26 [label = "SEQ"];
+v26 -> v15;
+v26 -> v25;
+v15 [label = "SEQ"];
+v15 -> v14;
+v14 [label = "SEQ"];
+v14 -> v13;
+v13 [label = "MOVE"];
+v13 -> v12;
+v13 -> v8;
+v12 [label = "MEM"];
+v12 -> v11;
+v11 [label = "BINOP (PLUS)"];
+v11 -> v10;
+v11 -> v9;
+v10 [label = "TEMP $fp"];
+v9 [label = "CONST -4"];
+v8 [label = "CALL: Label_1_AllocateRecord"];
+v8 -> v5;
+v5 [label = "Exp
+List"];
+v5 -> v4;
+v4 [label = "CONST 6701"];
+v5 -> v3;
+v3 [label = "Exp
+List"];
+v3 -> v2;
+v2 [label = "CONST 7500"];
+v3 -> v1;
+v1 [label = "Exp
+List"];
+v1 -> v0;
+v0 [label = "CONST 19"];
+v1 -> v7;
+v7 [label = "Exp
+List"];
+v7 -> v6;
+v6 [label = "CONST 3"];
+v25 [label = "CALL: Label_3_PrintInt"];
+v25 -> v24;
+v24 [label = "Exp
+List"];
+v24 -> v23;
+v23 [label = "MEM"];
+v23 -> v22;
+v22 [label = "BINOP (PLUS)"];
+v22 -> v20;
+v22 -> v21;
+v20 [label = "MEM"];
+v20 -> v19;
+v19 [label = "BINOP (PLUS)"];
+v19 -> v18;
+v19 -> v17;
+v18 [label = "TEMP $fp"];
+v17 [label = "CONST -4"];
+v21 [label = "CONST 8"];
+
+}

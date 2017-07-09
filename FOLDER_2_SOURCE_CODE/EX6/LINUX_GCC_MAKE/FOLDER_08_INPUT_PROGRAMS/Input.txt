@@ -1,0 +1,10 @@
+let
+
+	type address = {Apt:int,rent:int,ZIP:int}
+
+	var home:address := address{19,7500,6701}
+in
+
+	PrintInt(home->ZIP)
+
+end

@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{hyperref}
+\begin{document}
+\title{Exercise 4}
+\date{Due 26/5/2017}
+\maketitle
+
+\section{Introduction}
+This exercise uses Bison on top of Flex to check whether
+the solution set input file has correct syntax.
+The grammar is given in Table \ref{Table_CFG_Of_Solution_Set}.
+\begin{table}[h]
+\centering
+\begin{tabular}{ l c l }
+  $S$              & $::=$ & solutionSet                               \\ \\
+  solutionSet      & $::=$ & $\{$rowVec$\}$ $+$ SP$(\{$rowVecList$\})$ \\
+                   & $::=$ &                    SP$(\{$rowVecList$\})$ \\
+                   & $::=$ & $\{$rowVec$\}$                            \\ \\
+  rowVecList       & $::=$ & rowVec, rowVecList                        \\
+                   & $::=$ & rowVec                                    \\ \\
+  rowVec           & $::=$ & (num, num)                                \\
+                   & $::=$ & (num, num, num)                           \\
+                   & $::=$ & (num, num, num, num)                      \\ \\
+  num              & $::=$ & $[$op$]$ int                              \\
+                   & $::=$ & $[$op$]$ int div int                      \\ \\
+  int              & $::=$ & 0                                         \\
+                   & $::=$ & $[1-9][0-9]^{*}$                          \\ \\
+  div              & $::=$ & $/$                                       \\
+                   & $::=$ & \textbackslash                            \\ \\
+  op               & $::=$ & $+$                                       \\
+                   & $::=$ & $-$                                       \\ \\
+\end{tabular}
+\caption{
+Context free grammar for the language of the solution set.
+\label{Table_CFG_Of_Solution_Set}}
+\end{table}
+In addition, \textit{all} row vectors have to be of the same size
+($2$, $3$ or $4$), denominators can not be zero, and denominators can not be negative.
+\section{Bison}
+Bison is an LALR(1) parser generator, which receives as input a context free grammar,
+and implements a parser for that grammar in a single C file.
+An overall example for using Bison is inside the row operations parser.
+
+\section{Input}
+The input for this exercise is a single text file that contains the solution set.
+
+\section{Output}
+The output is a single text file that should contain a single word:
+either OK when the solution set has correct syntax, or FAIL otherwise.
+
+\section{Submission Guidelines}
+The code for this exercise resides as usual in subdirectory EX4.
+The file SolutionSet.y, and possibly SolutionSet.lex should be the only file(s) you change.
+Please submit your exercise in your GitHub repository under COMPILATION/EX4,
+and have a makefile there to build a runnable program called Lini.
+To avoid the pollution of EX4, please remove all *.o files once the target is built.
+The next paragraph describes the execution of Lini.
+
+\paragraph{Execution parameters}
+Lini recevies $2$ input file names:
+\begin{table}[h]
+\centering
+\begin{tabular}{ l }
+  Input.txt  \\
+  Output.txt \\
+\end{tabular}
+\end{table}
+
+
+\end{document}
