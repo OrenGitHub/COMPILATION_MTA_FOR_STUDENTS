@@ -1,0 +1,231 @@
+Conflict in state 10 between rule 5 and token PLUS resolved as reduce.
+Conflict in state 10 between rule 5 and token MINUS resolved as reduce.
+Conflict in state 10 between rule 5 and token TIMES resolved as shift.
+Conflict in state 10 between rule 5 and token DIVIDE resolved as shift.
+Conflict in state 11 between rule 4 and token PLUS resolved as reduce.
+Conflict in state 11 between rule 4 and token MINUS resolved as reduce.
+Conflict in state 11 between rule 4 and token TIMES resolved as shift.
+Conflict in state 11 between rule 4 and token DIVIDE resolved as shift.
+Conflict in state 12 between rule 6 and token PLUS resolved as reduce.
+Conflict in state 12 between rule 6 and token MINUS resolved as reduce.
+Conflict in state 12 between rule 6 and token TIMES resolved as reduce.
+Conflict in state 12 between rule 6 and token DIVIDE resolved as reduce.
+Conflict in state 13 between rule 7 and token PLUS resolved as reduce.
+Conflict in state 13 between rule 7 and token MINUS resolved as reduce.
+Conflict in state 13 between rule 7 and token TIMES resolved as reduce.
+Conflict in state 13 between rule 7 and token DIVIDE resolved as reduce.
+
+Grammar
+rule 1    program -> E
+rule 2    E -> INT
+rule 3    E -> LPAREN E RPAREN
+rule 4    E -> E MINUS E
+rule 5    E -> E PLUS E
+rule 6    E -> E TIMES E
+rule 7    E -> E DIVIDE E
+
+Terminals, with rules where they appear
+
+$ (-1)
+error (256)
+INT (258) 2
+PLUS (259) 5
+MINUS (260) 4
+TIMES (261) 6
+DIVIDE (262) 7
+LPAREN (263) 3
+RPAREN (264) 3
+
+Nonterminals, with rules where they appear
+
+program (10)
+    on left: 1
+E (11)
+    on left: 2 3 4 5 6 7, on right: 1 3 4 5 6 7
+
+
+state 0
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    program	go to state 14
+    E   	go to state 3
+
+
+
+state 1
+
+    E  ->  INT .   (rule 2)
+
+    $default	reduce using rule 2 (E)
+
+
+
+state 2
+
+    E  ->  LPAREN . E RPAREN   (rule 3)
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    E   	go to state 4
+
+
+
+state 3
+
+    program  ->  E .   (rule 1)
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+
+    PLUS	shift, and go to state 5
+    MINUS	shift, and go to state 6
+    TIMES	shift, and go to state 7
+    DIVIDE	shift, and go to state 8
+
+    $default	reduce using rule 1 (program)
+
+
+
+state 4
+
+    E  ->  LPAREN E . RPAREN   (rule 3)
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+
+    PLUS	shift, and go to state 5
+    MINUS	shift, and go to state 6
+    TIMES	shift, and go to state 7
+    DIVIDE	shift, and go to state 8
+    RPAREN	shift, and go to state 9
+
+
+
+state 5
+
+    E  ->  E PLUS . E   (rule 5)
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    E   	go to state 10
+
+
+
+state 6
+
+    E  ->  E MINUS . E   (rule 4)
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    E   	go to state 11
+
+
+
+state 7
+
+    E  ->  E TIMES . E   (rule 6)
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    E   	go to state 12
+
+
+
+state 8
+
+    E  ->  E DIVIDE . E   (rule 7)
+
+    INT 	shift, and go to state 1
+    LPAREN	shift, and go to state 2
+
+    E   	go to state 13
+
+
+
+state 9
+
+    E  ->  LPAREN E RPAREN .   (rule 3)
+
+    $default	reduce using rule 3 (E)
+
+
+
+state 10
+
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E PLUS E .   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+
+    TIMES	shift, and go to state 7
+    DIVIDE	shift, and go to state 8
+
+    $default	reduce using rule 5 (E)
+
+
+
+state 11
+
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E MINUS E .   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+
+    TIMES	shift, and go to state 7
+    DIVIDE	shift, and go to state 8
+
+    $default	reduce using rule 4 (E)
+
+
+
+state 12
+
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E TIMES E .   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+
+
+    $default	reduce using rule 6 (E)
+
+
+
+state 13
+
+    E  ->  E . MINUS E   (rule 4)
+    E  ->  E . PLUS E   (rule 5)
+    E  ->  E . TIMES E   (rule 6)
+    E  ->  E . DIVIDE E   (rule 7)
+    E  ->  E DIVIDE E .   (rule 7)
+
+
+    $default	reduce using rule 7 (E)
+
+
+
+state 14
+
+    $   	go to state 15
+
+
+
+state 15
+
+    $   	go to state 16
+
+
+
+state 16
+
+    $default	accept

@@ -1,0 +1,233 @@
+%%%%%%%%%%%%%%%%%%
+% DOCUMENT CLASS %
+%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT %
+%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\title{Exercise 1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTHOR = COURSE NAME HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Compilation 0368:3133}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DATE = SUBMISSION DATE HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{Due 08/11/2017}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Introduction %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+During the semester we will implement a compiler to an invented
+object oriented language called RioMare.
+The entire specification of the RioMare programming language
+appears inside the relevant folder of the course website.
+In order to make this document self contained,
+all the information needed to complete the first exercise is brought here again.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Programming Assignment %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Programming Assignment}
+The first exercise implements a lexical scanner based on the
+open source tool \href{http://jflex.de/}{JFlex}.
+The input for the scanner is a single text file containing a RioMare program,
+and the output is a (single) text file containing a tokenized representation of the input.
+The course repository contains a simple skeleton program,
+and you are encouraged to work your way up from there.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Lexical Considerations %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lexical Considerations}
+\paragraph{Identifiers} may contain letters and digits, and must start with a letter.
+\paragraph{Keywords} in Table \ref{Table_Reserved_Keywords_of_RioMare} can \textit{not}
+be used as identifiers.
+\begin{table}[h]
+\centering
+\begin{tabular}{ l l l l}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+class   & nil    & array  & while \\
+extends & return & new    & if    \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tabular}
+\caption{
+Reserved keywords of RioMare.
+\label{Table_Reserved_Keywords_of_RioMare}}
+\end{table}
+\paragraph{White spaces} consist of spaces, tabs and newlines characters.
+They may appear between any tokens.
+Keywords and identifiers must be separated by a white space,
+or a token that is neither a keyword nor an identifier.
+\paragraph{Comments} in RioMare are similar to those used in the C programming language,
+but may only contain characters from Table \ref{Table_Characters_That _May_Appear_inside_Comments}.
+\begin{table}[h]
+\centering
+\begin{tabular}{ | c | c | c | c | }
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        &        &              &                  \\
+letters & digits & white spaces & line terminators \\
+        &        &              &                  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  &     &                 &                       \\
+( ) [ ] $\{$ $\}$ & ? ! & $+$ $-$ $*$ $/$ & . (dot) ; (semicolon) \\
+                  &     &                 &                       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{
+Characters that may appear inside comments in RioMare.
+\label{Table_Characters_That _May_Appear_inside_Comments}}
+\end{table}
+A comment beginning with the characters // indicates that the remainder of the line is a comment.
+In addition, a comment can be a sequence of characters that begins with /*,
+followed by any characters from Table \ref{Table_Characters_That _May_Appear_inside_Comments},
+up to the first occurrence of the end sequence */.
+Comments that contain characters that do not appear in Table
+\ref{Table_Characters_That _May_Appear_inside_Comments} are lexical errors.
+Unclosed comments are lexical errors too.
+\paragraph{Integer} literals may start with an optional negation sign $-$,
+followed by a sequence of digits.
+Integers should \textit{not} have leading zeroes,
+and when they do, it is a lexical error.
+In addition, $-0$ is a lexical error.
+Though integers are stored as 32 bits in memory,
+they are artificially limited in RioMare to have
+16-bits signed values between $-2^{15}$ and $2^{15}-1$.
+Integers out of this range are lexical errors.
+\paragraph{Strings} are sequences of (zero or more) letters between double quotes.
+Strings that contain non letter characters are lexical errors.
+Unclosed strings are lexical errors too.
+\section{Input}
+The input for this exercise is a single text file, the input RioMare program.
+%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Output %
+%%%%%%%%%%%%%%%%%%%%%
+\section{Output}
+The output is a single text file that contains a tokenized representation of the input program.
+Each token should appear in a separate line, together with the line number
+it appeared on, and the character position inside that line.
+The list of token names appears in Table \ref{Table_Token_Names_For_Exercise_1},
+and will only be used in this first exercise.
+Later phases of the compiler will make no use of these token names.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|l|c|}
+\hline
+Token Name & Description & & Token Name & Description \\
+\hline
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+LPAREN    & $($  & & ASSIGN           & $:=$                     \\
+RPAREN    & $)$  & & EQ               & $=$                      \\
+LBRACK    & $[$  & & LT               & $<$                      \\
+RBRACK    & $]$  & & GT               & $>$                      \\
+LBRACE    & $\{$ & & ARRAY            &                          \\
+RBRACE    & $\}$ & & CLASS            &                          \\
+NIL       &      & & EXTENDS          &                          \\
+PLUS      & $+$  & & RETURN           &                          \\
+MINUS     & $-$  & & WHILE            &                          \\
+TIMES     & $*$  & & IF               &                          \\
+DIVIDE    & $/$  & & NEW              &                          \\
+COMMA     & $,$  & & INT$(value)$     & $value$ is an integer    \\
+DOT       & $.$  & & STRING$(value)$  & $value$ is a string      \\
+SEMICOLON & $;$  & & ID$(value)$      & $value$ is an identifier \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{
+Token names for the first exercise.
+Note that three types of tokens are associated with corresponding values:
+integers, identifiers and strings.
+The rest of the tokens encountered only contain their name.
+\label{Table_Token_Names_For_Exercise_1}}
+\end{table}
+Three types of tokens are associated with corresponding values: integers, identifiers and strings.
+The printing format for these tokens can be easily deduced from the examples in Table
+\ref{Table_Token_Printing_Examples_For_Exercise_1}.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l| }
+Printed Lines Examples & Description \\
+\hline
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+LPAREN[$7$,$8$] & left parenthesis is encountered in line $7$, character position $8$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+INT($74$)[$3$,$8$] & integer $74$ is encountered in line $3$, character position $8$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+STRING(``Dan")[$2$,$5$] & string ``Dan" is encountered in line $2$, character position $5$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ID(numPts)[$1$,$6$] & identifier numPts is encountered in line $1$, character position $6$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{
+Printing format for the first exercise.
+Each line in the output text file should contain the token name,
+the line number they appeared on, and the character position inside that line.
+Note that three types of tokens are associated with corresponding values:
+integers, identifiers and strings.
+These values should appear inside the parentheses as shown.
+\label{Table_Token_Printing_Examples_For_Exercise_1}}
+\end{table}
+Whenever the input program contains a lexical error, the output file
+should contain a \textit{single} word only: ERROR.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Submission Guidelines %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Submission Guidelines}
+Open an account on \href{https://github.com/}{GitHub}.
+Then, visit the
+\href{https://education.github.com/discount_requests/new}{academic discount page}
+to enable the free creation of private repositories.
+One team member should create a new \textit{private} repository called COMPILATION,
+and then invite other team members, the course grader (elazarg) and myself (OrenGitHub)
+as collaborators.
+Please put inside the uppermost folder (COMPILATION) the following text files:
+(1) ``IDS.txt", with the IDs of all team members (one ID per line).
+(2) ``USERS.txt", with the GitHub user names of all team members (one user name per line).
+(3) ``NAMES.txt", with the \textit{hebrew} names of all team members (one name per line).
+In addition, COMPILATION should contain a sub folder called EX1
+where your code will reside.
+COMPILATION/EX1 should contain a makefile building your source files to a
+runnable jar file called LEXER (note the lack of the .jar suffix).
+Feel free to use the makefile supplied in the course repository,
+or write a new one if you want to. 
+Before you submit, make sure that your exercise compiles and runs
+on the school server: $nova.cs.tau.ac.il$.
+This is the formal running environment of the course.
+\paragraph{Execution parameters}
+LEXER receives $2$ file names:\\ \\
+InputRioMareProgram.txt\\
+OutputTokenizedProgram.txt
+
+\end{document}

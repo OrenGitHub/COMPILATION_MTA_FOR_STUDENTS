@@ -1,0 +1,14 @@
+#!/bin/bash
+sed -i 's/Temp_3/$t0/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_4/$t1/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_8/$t2/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_7/$t3/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_2/$t4/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_5/$t0/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_10/$t1/g'     ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_9/$t2/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/\bTemp_1\b/$t3/g'  ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_6/$t0/g'      ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_12/$t1/g'     ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_11/$t2/g'     ./FOLDER_5_OUTPUT/MIPS.txt
+sed -i 's/Temp_0/$t5/g'      ./FOLDER_5_OUTPUT/MIPS.txt

@@ -1,0 +1,65 @@
+digraph
+{
+graph [ordering = "out"]
+v0 [label = "SIMPLE
+VAR
+(GIDI)"];
+v1 [label = "INT(60)"];
+v2 [label = "INT(50)"];
+v3 [label = "INT(40)"];
+v4 [label = "BINOP(*)"];
+v4 -> v2;
+v4 -> v3;
+v5 [label = "BINOP(-)"];
+v5 -> v1;
+v5 -> v4;
+v6 [label = "ASSIGN
+left := right
+"];
+v6 -> v0;
+v6 -> v5;
+v7 [label = "SIMPLE
+VAR
+(OREN)"];
+v8 [label = "INT(11)"];
+v9 [label = "INT(22)"];
+v10 [label = "BINOP(+)"];
+v10 -> v8;
+v10 -> v9;
+v11 [label = "INT(33)"];
+v12 [label = "BINOP(+)"];
+v12 -> v10;
+v12 -> v11;
+v13 [label = "ASSIGN
+left := right
+"];
+v13 -> v7;
+v13 -> v12;
+v14 [label = "SIMPLE
+VAR
+(MOISH)"];
+v15 [label = "INT(-70)"];
+v16 [label = "INT(-90)"];
+v17 [label = "BINOP(+)"];
+v17 -> v15;
+v17 -> v16;
+v18 [label = "ASSIGN
+left := right
+"];
+v18 -> v14;
+v18 -> v17;
+v19 [label = "STMT
+LIST
+"];
+v19 -> v18;
+v20 [label = "STMT
+LIST
+"];
+v20 -> v13;
+v20 -> v19;
+v21 [label = "STMT
+LIST
+"];
+v21 -> v6;
+v21 -> v20;
+}

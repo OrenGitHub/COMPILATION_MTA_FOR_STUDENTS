@@ -1,0 +1,58 @@
+.data
+String_680: .asciiz "AlonzoMorales"
+
+.text
+main:
+
+jal Label_0_main
+
+Label_0_main:
+
+	addi $fp,$sp,40
+
+	la $t0,String_680
+
+	li $t1,0
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $t1,1
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $t1,2
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $t1,3
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $t1,4
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $t1,5
+	add $t2,$t0,$t1
+	lb $t1,($t2)
+	addi $a0,$t1,0
+	li $v0,11
+	syscall
+
+	li $v0,10
+	syscall

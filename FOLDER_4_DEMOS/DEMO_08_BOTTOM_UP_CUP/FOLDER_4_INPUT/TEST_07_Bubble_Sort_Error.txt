@@ -1,0 +1,37 @@
+array IntArray = int[]
+
+void BubbleSort(IntArray array,int size)
+{
+    int i := 0;
+    int min := -32768;
+    int minIndex := -1;
+    
+    while (i < size)
+    {
+        int j := i+;
+        while (j<size)
+        {
+            if (array[j] < min)
+            {
+                int i := array[minIndex];
+                array[minIndex] := array[j];
+                array[j] := i;
+            }
+        }
+    }
+}
+
+void main(void)
+{
+    IntArray array := new int[7];
+    
+    array[0] := 34;
+    array[1] := 12;
+    array[2] := -600;
+    array[3] := -400;
+    array[4] := 70;
+    array[5] := 30;
+    array[6] := -580;
+    
+    PrintPrimes(2,100);
+}

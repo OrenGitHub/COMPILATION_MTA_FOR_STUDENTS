@@ -1,0 +1,212 @@
+%%%%%%%%%%%%%%%%%%
+% DOCUMENT CLASS %
+%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT %
+%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\title{Exercise 2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTHOR = COURSE NAME HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Compilation 0368:3133}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DATE = SUBMISSION DATE HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{Due 29/11/2017}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Introduction %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+We continue our journey of building a compiler
+for the invented object oriented language RioMare.
+Remember that the entire specification of RioMare appears
+inside the relevant folder of the course website.
+In order to make this document self contained,
+all the information needed to complete the second exercise is brought here again.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Programming Assignment %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Programming Assignment}
+The second exercise implements a \href{http://www2.cs.tum.edu/projects/cup/}{CUP} based
+parser on top of your \href{http://jflex.de/}{JFlex} scanner from the exercise $1$.
+The input for the parser is a single text file containing a RioMare program,
+and the output is a (single) text file indicating whether the input program
+is syntactically valid or not. In addition to that,
+whenever the input program has correct syntax,
+the parser should internally create the abstract syntax tree (AST).
+Currently, the course repository contains a simple skeleton
+parser, that indicates whether the input program has correct syntax,
+and internally builds an AST for a small subset of RioMare.
+As always, you are encouraged to work your way up from there,
+but feel free to write the whole exercise from scratch if you want to.
+Note also, that the AST will not be checked in exercise $2$.
+It is needed for later phases (semantic analyzer and code generation)
+but the best time to design and implement the AST is exercise $2$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: The RioMare Syntax %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The RioMare Syntax}
+Table \ref{Table_CFG_Of_RioMare} specifies the context free grammar of RioMare.
+You will need to feed this grammar to \href{http://www2.cs.tum.edu/projects/cup/}{CUP},
+and make sure there are no shift-reduce conflicts.
+The operator precedence is listed in Table
+\ref{Table_Binary_Operators_Of_RioMare}. 
+\begin{table}[h]
+\centering
+\begin{tabular}{ l c l }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Program  & $::=$ & dec$^{+}$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+dec      & $::=$ & funcDec $|$ varDec $|$ classDec $|$ arrayDec \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+varDec   & $::=$ & ID ID $[$ ASSIGN exp $]$ ';' \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+funcDec  & $::=$ & ID ID $'('$ $[$ ID ID $[$ ',' ID ID $]^{*}$ $]$ $')'$ %%
+                   $'\{'$ stmt   $[$ stmt $]^{*}$ $'\}'$                 \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+classDec & $::=$ & CLASS ID $[$ EXTENDS ID $]$ $'\{'$ cField $[$ cField $]^{*}$ $'\}'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+arrayDec & $::=$ & ARRAY ID $=$ ID $'['$ $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+exp      & $::=$ & var                                                            \\
+         & $::=$ & $'('$ exp $')'$                                                \\
+         & $::=$ & exp BINOP exp                                                  \\
+         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ \\
+         & $::=$ & $['-']$ INT $|$ NIL $|$ STRING $|$ NEW ID $|$ NEW ID $'['$ exp $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+var      & $::=$ & ID                  \\
+         & $::=$ & var '.' ID          \\
+         & $::=$ & var $'['$ exp $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+stmt     & $::=$ & varDec                                                             \\
+         & $::=$ & var ASSIGN exp ';'                                                 \\
+         & $::=$ & RETURN $[$ exp $]$ ';'                                             \\
+         & $::=$ & IF $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$             \\
+         & $::=$ & WHILE $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$          \\
+         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ ';' \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+cField   & $::=$ & varDec $|$ funcDec \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+BINOP    & $::=$ & $+$ $|$ $-$ $|$ $*$ $|$ $/$ $|$ $<$ $|$ $>$ $|$ $=$ \\
+INT      & $::=$ & $[1-9][0-9]^{*}$ $|$ $0$                            \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+\end{tabular}
+\caption{
+Context free grammar for the RioMare programming language.
+\label{Table_CFG_Of_RioMare}}
+\end{table}
+\begin{table}[h]
+\centering
+\begin{tabular}{ |c|c|l|l| }
+\hline
+Precedence & Operator & Description & Associativity \\
+\hline
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1          & $:=$            & assign         &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+2          & $=$             & equals         & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+3          & $<,>$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+4          & $+,-$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+5          & $*,/$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+6          & $[$             & array indexing &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+7          & $($             & function call  &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+8          & $.$     & field access   & left          \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{
+Binary operators of RioMare along with their associativity and precedence.
+$1$ stands for the lowest precedence, and $9$ for the highest.
+\label{Table_Binary_Operators_Of_RioMare}}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Input %
+%%%%%%%%%%%%%%%%%%%%
+\section{Input}
+The input for this exercise is a single text file, the input RioMare program.
+%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Output %
+%%%%%%%%%%%%%%%%%%%%%
+\section{Output}
+The output is a \textit{single} text file that contains a \textit{single} word.
+Either OK when the input program has correct syntax,
+or otherwise ERROR(\textit{location}), where \textit{location}
+is the line number of the \textit{first} error that was encountered.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Submission Guidelines %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Submission Guidelines}
+The skeleton code for this exercise resides (as usual)
+in subdirectory EX2 of the course repository.
+You need to add the relevant derivation rules and AST constructors.
+COMPILATION/EX2 should contain a makefile building your source files to a
+runnable jar file called PARSER (note the lack of the .jar suffix).
+Feel free to use the makefile supplied in the course repository,
+or write a new one if you want to. 
+Before you submit, make sure that your exercise compiles and runs
+on the school server: $nova.cs.tau.ac.il$.
+This is the formal running environment of the course.
+\paragraph{Execution parameters}
+PARSER receives $2$ input file names:\\ \\
+InputRioMareProgram.txt\\
+OutputStatus.txt
+
+\end{document}

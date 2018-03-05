@@ -1,0 +1,414 @@
+%%%%%%%%%%%%%%%%%%
+% DOCUMENT CLASS %
+%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+
+%%%%%%%%%%%%
+% PACKAGES %
+%%%%%%%%%%%%
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT %
+%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\title{Exercise 4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTHOR = COURSE NAME HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Compilation 0368:3133}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DATE = SUBMISSION DATE HERE %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{Due 24/1/2018}
+
+%%%%%%%%%
+% TITLE %
+%%%%%%%%%
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Introduction %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+Congratulations, you have made it to the final step of
+building an entire compiler for RioMare programs.
+Remember that the entire specification of RioMare appears
+inside the relevant folder of the course website.
+In order to make this document self contained,
+all the information needed to complete the fourth exercise is brought here again.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Programming Assignment %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Programming Assignment}
+The fourth (and last) exercise implements the code generation phase for RioMare programs.
+The chosen destination language this year is \href{https://en.wikipedia.org/wiki/MIPS_architecture}{MIPS}
+assembly, favoured for it straightforward syntax,
+\href{https://en.wikipedia.org/wiki/SPIM}{complete toolchain}
+and available tutorials.
+The exercise can be roughly divided into three parts as follows:
+$(1)$ recursively traverse the AST to create
+an intermediate representation (IR) of the program.
+$(2)$ Translate IR to MIPS instructions,
+but use an unbounded number of temporaries instead of registers.
+$(3)$ Perform liveness analysis, build the interference graph,
+and allocate those hundreds (or so) temporaries into $8$ physical registers.
+The input for this last exercise is a (single) text file, containing a RioMare
+program, and the output is a (single) text file that contains the translation
+of the input program into MIPS assembly.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: RioMare Semantics %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The RioMare Semantics}
+This section describes the semantics of RioMare,
+and provides a multitude of example programs.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUB-SECTION :: Binary Operations %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Binary Operations}
+\paragraph{Integers} in RioMare are artificially bounded between $-2^{15}$ and $2^{15}-1$.
+The semantics of integer binary operations in RioMare is therefore somewhat different
+than that of standard programming languages.
+It is presented in Table \ref{Table_Semantics_Of_Rio_Mare_Binary_Operations_Between_Integers},
+and to distinguish RioMare operators from the usual arithmetic signs,
+we shall use a RioMare subscript inside brackets:
+($*_{[RioMare]}$, $+_{[RioMare]}$ etc.)
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{10cm}|}
+\hline
+\[
+a ~ *_{[RioMare]} ~ b ~ = ~
+\begin{cases} 
+-2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a*b \in (-\infty, -2^{15}] \\
+a*b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a*b \in (-2^{15},2^{15}-1] \\
+2^{15}-1 ~ & ~ ~ ~ ~ ~ ~ ~ ~ otherwise                                \\
+\end{cases}
+\]
+\\ \hline
+\[
+a ~ +_{[RioMare]} ~ b ~ = ~
+\begin{cases} 
+-2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a+b \in (-\infty, -2^{15}] \\
+a+b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a+b \in (-2^{15},2^{15}-1] \\
+2^{15}-1 ~ & ~ ~ ~ ~ ~ ~ ~ ~ otherwise                                \\
+\end{cases}
+\]
+\\ \hline
+\[
+a ~ -_{[RioMare]} ~ b ~ = ~
+\begin{cases} 
+-2^{15}  ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a-b \in (-\infty, -2^{15}] \\
+a-b      ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ a-b \in (-2^{15},2^{15}-1] \\
+2^{15}-1 ~ & ~ ~ ~ ~ ~ ~ ~ ~ otherwise                                \\
+\end{cases}
+\]
+\\ \hline
+\[
+a ~ /_{[RioMare]} ~ b ~ = ~
+\begin{cases} 
+-2^{15}             ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ \lfloor a/b \rfloor \in (-\infty, -2^{15}] \\
+\lfloor a/b \rfloor ~ & ~ ~ ~ ~ ~ ~ ~ ~ \text{when} ~ \lfloor a/b \rfloor \in (-2^{15},2^{15}-1] \\
+2^{15}-1            ~ & ~ ~ ~ ~ ~ ~ ~ ~ otherwise                                                \\
+\end{cases}
+\]
+\\ \hline
+\end{tabular}
+\caption{Semantics of RioMare binary operations between integers
+\label{Table_Semantics_Of_Rio_Mare_Binary_Operations_Between_Integers}}
+\end{table}
+\paragraph{Strings} can be concatenated with binary operation $+$,
+and tested for (contents) equality with binary operator $=$.
+When concatenating two (null terminated) strings $\{s_{i}\}_{i=1}^{2}$,
+the resulting string $s_{1}s_{2}$ is allocated on the heap,
+and should be null terminated. The result of testing contents equality
+is either $0$ when they are equal, or $1$ otherwise.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUB-SECTION :: If and While Statements %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{If and While Statements}
+\label{subsection_If_And_While_Statements}
+\paragraph{While statements} behave similar to (practically) all programming languages:
+before executing their body, their condition is evaluated.
+If it equals $0$, the body is ignored, and control is transferred
+to the statement immediately after the body.
+Otherwise, the body is executed, then the condition is evaluated again, and so forth. 
+\paragraph{If statements} behave similar to (practically) all programming languages:
+before executing their body, their condition is evaluated.
+If it equals $0$, the body is ignored, and control is transferred
+to the statement immediately after the body.
+Otherwise, the body is executed exactly once,
+then control is transferred to the statement immediately after the body. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUB-SECTION :: Function Calls and Order of Evaluation %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Function Calls and Order of Evaluation}
+\label{subsection_Function_Calls_And_Order_Of_Evaluation}
+\paragraph{When calling a function} with more than one input parameter,
+the evaluation order matters. You should evaluate the sent parameters
+from left to right, so for example, the following code should print \verb"32766":
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|}
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                               \\
+\verb"CLASS counter { int i := 32767; }"       \\
+\verb"counter c := NEW counter;"               \\
+\verb"int inc(){ c.i := c.i + 1; return 0;}"   \\
+\verb"int dec(){ c.i := c.i - 1; return 9;}"   \\
+\verb"int foo(int m, int n){ return c.i; }"    \\
+\verb"void main()"                             \\
+\verb"{"                                       \\
+\verb"    PrintInt(foo(inc(),dec()));"         \\
+\verb"}"                                       \\
+                                               \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{Evaluation order of a called function's parameters matters.
+\label{Table_Code_Example_Evaluation_Order_Function_Call}}
+\end{table}
+\paragraph{When evaluating global variables} order matters,
+and it should be the same as the order of appearance in the original program.
+Note that before entering main, all global variables with initialized values
+should be evaluated.
+\paragraph{Initializing class data members}
+should occur during the construction of the object.
+The order in which you evaluate the data members initializations is irrelevant.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUB-SECTION :: Runtime Checks %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Runtime Checks}
+\label{subsection_Runtime_Checks}
+RioMare enforces three kinds of runtime checks:
+division by zero, invalid pointer dereference and out of bound array access.
+\paragraph{Division by zero} should be handled by printing ``Division By Zero",
+and then exit gracefully by using the exit system call.
+The following code will result in such behaviour:
+\[
+\verb"int i:= 6; while (i+1) { int j := 8/i; i := i-1; }"
+\]
+\paragraph{Invalid pointer dereference} can occur when trying to
+access data members or methods of uninitialized class variable.
+For example, here:
+\[
+\verb"CLASS Father { int i; int j; } Father f; int i := f.i;"
+\]
+Similarly, assigning \verb"NIL" to \verb"f" should clearly trigger the same behaviour:
+\[
+\verb"CLASS Father { int i; int j; } Father f := NIL; int i := f.i;"
+\]
+When an invalid pointer dereference occurs, the program should print
+``Invalid Pointer Dereference" and then then exit gracefully by using the exit system call.
+\paragraph{Out of bound array access} should be handled by printing "Access Violation" 
+and then exit gracefully by using the exit system call.
+The following code demonstrates an illegal array access:
+\[
+\verb"ARRAY IntArray = int[] IntArray A := NEW int[6]; int i := A[18];"
+\]
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUB-SECTION :: System Calls %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{System Calls}
+\label{subsection_System_Calls}
+MIPS supports a limited set of system calls,
+out of which we will need only four:
+printing an integer,
+printing a string,
+allocating heap memory and
+exit the program.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+system call example & MIPS code & Remarks      \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\verb"PrintInt(17)" & \verb"li $a0,17" & \\
+                    & \verb"li $v0,1"  & \\
+                    & \verb"syscall"   & \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\verb"string s:="``\verb"abc"" & \verb".data"                              & Printed string must be   \\
+\verb"PrintString(s)"          & \verb"myLovelyStr: .asciiz "``\verb"abc"" & null terminated.         \\
+                               & \verb".text"                              & It can be allocated      \\
+                               & \verb"main:"                              & inside the text section, \\
+                               & \verb"la $a0,myLovelyStr"                 & or in the heap.          \\
+                               & \verb"li $v0,4"                           &                          \\
+                               & \verb"syscall"                            &                          \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\verb"Malloc(17)" & \verb"li $a0,17" & allocated address         \\
+                  & \verb"li $v0,9"  & is returned in \verb"$v0" \\
+                  & \verb"syscall"   &                           \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\verb"Exit()"    & \verb"li $v0,10" & Make sure every              \\
+                 & \verb"syscall"   & MIPS program ends with exit. \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{Relevant MIPS system calls.
+\label{Table_MIPS_System_Calls}}
+\end{table}
+\newpage
+\begin{table}[h]
+\centering
+\begin{tabular}{ l c l }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Program  & $::=$ & dec$^{+}$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+dec      & $::=$ & funcDec $|$ varDec $|$ classDec $|$ arrayDec \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+varDec   & $::=$ & ID ID $[$ ASSIGN exp $]$ ';' \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+funcDec  & $::=$ & ID ID $'('$ $[$ ID ID $[$ ',' ID ID $]^{*}$ $]$ $')'$ %%
+                   $'\{'$ stmt   $[$ stmt $]^{*}$ $'\}'$                 \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+classDec & $::=$ & CLASS ID $[$ EXTENDS ID $]$ $'\{'$ cField $[$ cField $]^{*}$ $'\}'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+arrayDec & $::=$ & ARRAY ID $=$ ID $'['$ $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+exp      & $::=$ & var                                                            \\
+         & $::=$ & $'('$ exp $')'$                                                \\
+         & $::=$ & exp BINOP exp                                                  \\
+         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ \\
+         & $::=$ & $['-']$ INT $|$ NIL $|$ STRING $|$ NEW ID $|$ NEW ID $'['$ exp $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+var      & $::=$ & ID                  \\
+         & $::=$ & var '.' ID          \\
+         & $::=$ & var $'['$ exp $']'$ \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+stmt     & $::=$ & varDec                                                             \\
+         & $::=$ & var ASSIGN exp ';'                                                 \\
+         & $::=$ & RETURN $[$ exp $]$ ';'                                             \\
+         & $::=$ & IF $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$             \\
+         & $::=$ & WHILE $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$          \\
+         & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ ';' \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+cField   & $::=$ & varDec $|$ funcDec \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+BINOP    & $::=$ & $+$ $|$ $-$ $|$ $*$ $|$ $/$ $|$ $<$ $|$ $>$ $|$ $=$ \\
+INT      & $::=$ & $[1-9][0-9]^{*}$ $|$ $0$                            \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\\
+\end{tabular}
+\caption{
+Context free grammar for the RioMare programming language.
+\label{Table_CFG_Of_RioMare}}
+\end{table}
+\begin{table}[h]
+\centering
+\begin{tabular}{ |c|c|l|l| }
+\hline
+Precedence & Operator & Description & Associativity \\
+\hline
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+1          & $:=$            & assign         &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+2          & $=$             & equals         & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+3          & $<,>$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+4          & $+,-$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+5          & $*,/$           &                & left  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+6          & $[$             & array indexing &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+7          & $($             & function call  &       \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+8          & $.$     & field access   & left          \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hline
+\end{tabular}
+\caption{
+Binary operators of RioMare along with their associativity and precedence.
+$1$ stands for the lowest precedence, and $9$ for the highest.
+\label{Table_Binary_Operators_Of_RioMare}}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Input %
+%%%%%%%%%%%%%%%%%%%%
+\section{Input}
+The input for this exercise is a single text file, the input RioMare program.
+
+%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Output %
+%%%%%%%%%%%%%%%%%%%%%
+\section{Output}
+The output is a single text file that contains the
+translation of the input program into MIPS assembly.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION :: Submission Guidelines %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Submission Guidelines}
+The skeleton code for this exercise resides (as usual)
+in subdirectory EX4 of the course repository.
+COMPILATION/EX4 should contain a makefile building your source files to a
+runnable jar file called COMPILER (note the lack of the .jar suffix).
+Feel free to use the makefile supplied in the course repository,
+or write a new one if you want to. 
+Before you submit, make sure that your exercise compiles and runs
+on the school server: $nova.cs.tau.ac.il$.
+This is the formal running environment of the course.
+
+\paragraph{Execution parameters}
+compiler receives $2$ input file names:\\ \\
+InputRioMareProgram.txt\\
+OutputMIPS.s
+
+\end{document}

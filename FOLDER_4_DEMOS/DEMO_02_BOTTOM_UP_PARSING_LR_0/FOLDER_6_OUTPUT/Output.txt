@@ -1,0 +1,1 @@
+{ID(num)=INT(90);ID(grade)=INT(85)}

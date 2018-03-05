@@ -1,0 +1,45 @@
+for (int command=0;command<numCommands;command++)
+{
+	live__in[command] := {}
+	live_out[command] := {}
+}
+
+int did_not_reach_fix_point = 0;
+
+do
+{
+	/*******************/
+	/* [1] Make a step */
+	/*******************/
+	for (int command=0;command<numCommands;command++)
+	{
+		live__in_tag[command] := use[command] U (live_out[command] - def[command]);
+	}
+
+	/***************************************************************/
+	/* [2] Propogate the effect of [1] to related nodes in the CFG */
+	/***************************************************************/
+	for (int command=0;command<numCommands;command++)
+	{
+		live_out_tag[command] := U_{s in successor[n]} live__in_tag[s]
+	}
+
+	/************************************/
+	/* [3] check if fix point was found */
+	/************************************/
+	for (int command=0;command<numCommands;command++)
+	{
+		if (live__in[command] != live__in_tag[command]) did_not_reach_fix_point = 1;
+		if (live_out[command] != live_out_tag[command]) did_not_reach_fix_point = 1;
+	}
+	
+	/***********************/
+	/* [4] sigma := sigma' */
+	/***********************/
+	for (int command=0;command<numCommands;command++)
+	{
+		live__in[command] := live__in_tag[command];
+		live_out[command] := live_out_tag[command];
+	}
+}
+while (did_not_reach_fix_point)
