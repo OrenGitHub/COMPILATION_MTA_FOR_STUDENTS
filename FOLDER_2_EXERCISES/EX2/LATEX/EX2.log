@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.28)  10 MAR 2018 06:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.28)  15 MAR 2018 06:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -196,24 +196,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 205.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 205.
  (./EX2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 205.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 205.
 Package rerunfilecheck Info: File `EX2.out' has not changed.
 (rerunfilecheck)             Checksum: D0FB250B43365CEC0D1DA3AD24C906E7;294.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 205.
  ) 
 Here is how much of TeX's memory you used:
  4263 strings out of 494888
  63881 string characters out of 6179710
- 150349 words of memory out of 5000000
+ 149349 words of memory out of 5000000
  7587 multiletter control sequences out of 15000+600000
  7934 words of font info for 28 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -228,7 +232,7 @@ type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb>
-Output written on EX2.pdf (3 pages, 115860 bytes).
+Output written on EX2.pdf (3 pages, 115410 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  82 compressed objects within 1 object stream
