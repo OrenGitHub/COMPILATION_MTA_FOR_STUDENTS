@@ -21,12 +21,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AUTHOR = COURSE NAME HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\author{Compilation 0368:3133}
+\author{Compilation 1450:3101}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DATE = SUBMISSION DATE HERE %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\date{Due 29/11/2017}
+\date{Due 11/4/2018}
 
 %%%%%%%%%
 % TITLE %
@@ -78,9 +78,9 @@ The operator precedence is listed in Table
 Program  & $::=$ & dec$^{+}$ \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-dec      & $::=$ & funcDec $|$ varDec $|$ classDec $|$ arrayDec \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+dec      & $::=$ & funcDec $|$ varDec $|$ classDec \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 varDec   & $::=$ & ID ID $[$ ASSIGN exp $]$ ';' \\
@@ -92,27 +92,24 @@ funcDec  & $::=$ & ID ID $'('$ $[$ ID ID $[$ ',' ID ID $]^{*}$ $]$ $')'$ %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 classDec & $::=$ & CLASS ID $[$ EXTENDS ID $]$ $'\{'$ cField $[$ cField $]^{*}$ $'\}'$ \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-arrayDec & $::=$ & ARRAY ID $=$ ID $'['$ $']'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 exp      & $::=$ & var                                                            \\
          & $::=$ & $'('$ exp $')'$                                                \\
          & $::=$ & exp BINOP exp                                                  \\
          & $::=$ & $[$ var '.' $]$ ID $'('$ $[$ exp $[$ ',' exp $]^{*}$ $]$ $')'$ \\
-         & $::=$ & $['-']$ INT $|$ NIL $|$ STRING $|$ NEW ID $|$ NEW ID $'['$ exp $']'$ \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+         & $::=$ & $['-']$ INT $|$ NIL                                            \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 var      & $::=$ & ID                  \\
          & $::=$ & var '.' ID          \\
-         & $::=$ & var $'['$ exp $']'$ \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \\  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 stmt     & $::=$ & varDec                                                             \\
          & $::=$ & var ASSIGN exp ';'                                                 \\
+         & $::=$ & var ASSIGN NEW ID ';'                                              \\
          & $::=$ & RETURN $[$ exp $]$ ';'                                             \\
          & $::=$ & IF $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$             \\
          & $::=$ & WHILE $'('$ exp $')'$ $'\{'$ stmt $[$ stmt $]^{*}$ $'\}'$          \\
@@ -160,21 +157,17 @@ Precedence & Operator & Description & Associativity \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-6          & $[$             & array indexing &       \\
+6          & $($             & function call  &       \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-7          & $($             & function call  &       \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-8          & $.$     & field access   & left          \\
+7          & $.$     & field access   & left          \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hline
 \end{tabular}
 \caption{
 Binary operators of RioMare along with their associativity and precedence.
-$1$ stands for the lowest precedence, and $9$ for the highest.
+$1$ stands for the lowest precedence, and $7$ for the highest.
 \label{Table_Binary_Operators_Of_RioMare}}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%
@@ -202,7 +195,7 @@ runnable jar file called PARSER (note the lack of the .jar suffix).
 Feel free to use the makefile supplied in the course repository,
 or write a new one if you want to. 
 Before you submit, make sure that your exercise compiles and runs
-on the school server: $nova.cs.tau.ac.il$.
+on \href{http://releases.ubuntu.com/14.04/}{Ubuntu 14.04.5 LTS}.
 This is the formal running environment of the course.
 \paragraph{Execution parameters}
 PARSER receives $2$ input file names:\\ \\
